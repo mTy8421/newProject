@@ -2,6 +2,6 @@
 
 
 ```
-git clone 
+git clone https://github.com/mTy8421/newProject.git
 npm run dev
 ```
