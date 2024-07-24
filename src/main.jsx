@@ -4,8 +4,8 @@ import App from "./App.jsx";
 import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Works from "./pages/Works/Works.jsx";
-import Historys from "./pages/Historys/Historys.jsx";
+import Works from "./pages/Users/Works.jsx";
+import Historys from "./pages/Users/Historys/Historys.jsx";
 import WorkAdd from "./pages/WorkHead/WorkAdd.jsx";
 import WorkAddDo from "./pages/WorkHead/WorkAddDo.jsx";
 import HeadWorks from "./pages/WorkHead/Works.jsx";

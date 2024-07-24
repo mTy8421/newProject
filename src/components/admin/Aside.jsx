@@ -1,4 +1,3 @@
-import React from "react";
 import "../style/Aside.css";
 import { Link } from "react-router-dom";
 
@@ -25,6 +24,14 @@ export default function Aside() {
           >
             <i className="mr-3"></i>
             หน้าหลัก
+          </Link>
+
+          <Link
+            to={"/headadd"}
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          >
+            <i className="mr-3"></i>
+            จักการผู้ใช้งาน
           </Link>
 
           <Link
