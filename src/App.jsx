@@ -17,9 +17,13 @@ function App() {
         </div>
         <h1 className="text-3xl font-bold text-center">Dashboard</h1>
         <div className="card">
-          <div className="card-title w-1/3">
-            <Bars />
-            <Pies />
+          <div className="card-title">
+            <div className="w-6/12">
+              <Bars />
+            </div>
+            <div className="w-1/3">
+              <Pies />
+            </div>
           </div>
         </div>
         <div className="mt-3">

@@ -48,7 +48,7 @@ const data = {
   datasets: [
     {
       label: "Test Data",
-      data: [1, 2, 3],
+      data: [1, 4, 3],
       backgroundColor: "rgb(255, 99, 132)",
       stack: "Stack 0",
     },

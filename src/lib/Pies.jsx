@@ -30,6 +30,10 @@ const data = {
   ],
 };
 
+const option = {
+  response: true
+}
+
 export function Pies() {
-  return <Doughnut data={data} />;
+  return <Doughnut data={data} options={option} />;
 }
