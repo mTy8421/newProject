@@ -22,7 +22,7 @@ ChartJS.register(
 const options = {
   plugins: {
     title: {
-      display: true,
+      display: false,
       text: "Test",
     },
   },
@@ -34,9 +34,21 @@ const options = {
   scales: {
     x: {
       stacked: true,
+      grid: {
+        display: false,
+      }
     },
     y: {
       stacked: true,
+      grid: {
+        display: false,
+      },
+      border: {
+        display: false,
+      },
+      ticks: {
+        display: false,
+      },
     },
   },
 };
