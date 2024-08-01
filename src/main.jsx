@@ -50,6 +50,10 @@ const router = createBrowserRouter([
     path: "/headapprove",
     element: <Approve />,
   },
+  {
+    path: "*",
+    element: <div>Not Found</div>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

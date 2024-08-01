@@ -16,7 +16,7 @@ const TableWork = () => {
         <tbody>
           {/* row 1 */}
           <tr className="hover">
-            <th>1</th>
+            <td>1</td>
             <td>Cy Ganderton</td>
             <td>Quality Control Specialist</td>
             <td>
@@ -25,7 +25,7 @@ const TableWork = () => {
           </tr>
           {/* row 2 */}
           <tr className="hover">
-            <th>2</th>
+            <td>2</td>
             <td>Hart Hagerty</td>
             <td>Desktop Support Technician</td>
             <td>
@@ -34,7 +34,7 @@ const TableWork = () => {
           </tr>
           {/* row 3 */}
           <tr className="hover">
-            <th>3</th>
+            <td>3</td>
             <td>Brice Swyre</td>
             <td>Tax Accountant</td>
             <td>

@@ -31,7 +31,7 @@ const data = {
 };
 
 const option = {
-  response: true
+  response: true,
 }
 
 export function Pies() {
