@@ -28,7 +28,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headadd"}
+            to={"/head/add"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -36,7 +36,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headaddworks"}
+            to={"/head/addworks"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -44,7 +44,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headworks"}
+            to={"/head/works"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -52,7 +52,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headhistorys"}
+            to={"/head/historys"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -60,7 +60,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headapprove"}
+            to={"/head/approve"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>

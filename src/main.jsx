@@ -6,12 +6,16 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Works from "./pages/Users/Works.jsx";
 import Historys from "./pages/Users/Historys/Historys.jsx";
+
 import WorkAdd from "./pages/WorkHead/WorkAdd.jsx";
 import WorkAddDo from "./pages/WorkHead/WorkAddDo.jsx";
 import HeadWorks from "./pages/WorkHead/Works.jsx";
 import HeadHistorys from "./pages/WorkHead/Historys/Historys.jsx";
 import Head from "./pages/WorkHead/Head.jsx";
 import Approve from "./pages/WorkHead/Approve.jsx";
+
+import Admin from "./pages/Admin/Admin.jsx";
+import AdminWork from "./pages/Admin/Work.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,19 +31,19 @@ const router = createBrowserRouter([
     element: <Historys />,
   },
   {
-    path: "/headadd",
+    path: "/head/add",
     element: <WorkAdd />,
   },
   {
-    path: "/headaddworks",
+    path: "/head/addworks",
     element: <WorkAddDo />,
   },
   {
-    path: "/headworks",
+    path: "/head/works",
     element: <HeadWorks />,
   },
   {
-    path: "/headhistorys",
+    path: "/head/historys",
     element: <HeadHistorys />,
   },
   {
@@ -47,8 +51,16 @@ const router = createBrowserRouter([
     element: <Head />,
   },
   {
-    path: "/headapprove",
+    path: "/head/approve",
     element: <Approve />,
+  },
+  {
+    path: "/admin",
+    element: <Admin />,
+  },
+  {
+    path: "/admin/works",
+    element: <AdminWork />,
   },
   {
     path: "*",

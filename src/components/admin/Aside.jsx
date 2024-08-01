@@ -19,7 +19,7 @@ export default function Aside() {
 
         <nav className="text-white text-base font-semibold pt-3">
           <Link
-            to={"/head"}
+            to={"/admin"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -27,7 +27,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headadd"}
+            to={"/admin/add"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -35,7 +35,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headadd"}
+            to={"/admin/add"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -43,7 +43,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headaddworks"}
+            to={"/admin/addworks"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -51,7 +51,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headworks"}
+            to={"/admin/works"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -59,7 +59,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headhistorys"}
+            to={"/admin/historys"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
@@ -67,7 +67,7 @@ export default function Aside() {
           </Link>
 
           <Link
-            to={"/headapprove"}
+            to={"/admin/approve"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>

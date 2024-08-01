@@ -35,35 +35,35 @@ export default function NavBar() {
               หน้าหลัก
             </Link>
             <Link
-              to={"/headadd"}
+              to={"/head/add"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
               <i className="mr-3"></i>
               เพิ่มหัวข้อภาระงาน
             </Link>
             <Link
-              to={"headaddworks"}
+              to={"head/addworks"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
               <i className="mr-3"></i>
               เพิ่มภาระงาน
             </Link>
             <Link
-              to={"/headworks"}
+              to={"/head/works"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
               <i className="mr-3"></i>
               ภาระงาน
             </Link>
             <Link
-              to={"/headhistorys"}
+              to={"/head/historys"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
               <i className="mr-3"></i>
               ประวัติการทำงาน
             </Link>
             <Link
-              to={"/headapprove"}
+              to={"/head/approve"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
               <i className="mr-3"></i>
