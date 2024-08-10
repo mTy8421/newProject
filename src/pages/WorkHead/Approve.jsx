@@ -8,12 +8,22 @@ export default function Approve() {
     <>
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
-      <div className="float-left mr-3">
-        <Aside></Aside>
-      </div>
-      <div className="container mt-3 ml-3">
-        <h1 className="text-3xl font-semibold">อนุมติภาระงาน</h1>
-        <TableApprove></TableApprove>
+
+      <div className="grid grid-cols-12">
+
+        <div className="sm:col-span-2">
+          <div className="sticky top-0">
+            <Aside></Aside>
+          </div>
+        </div>
+
+        <div className="mt-3 col-span-12 sm:col-span-10">
+
+          <h1 className="text-3xl font-semibold">อนุมติภาระงาน</h1>
+          <TableApprove></TableApprove>
+
+        </div>
+
       </div>
     </>
   );

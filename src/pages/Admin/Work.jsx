@@ -7,10 +7,18 @@ export default function Work() {
     <>
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
-      <div className="float-left mr-3">
-        <Aside></Aside>
-      </div>
 
+      <div className="grid grid-cols-12">
+
+        <div className="sticky top-0">
+          <Aside></Aside>
+        </div>
+
+        <div className="col-span-12 sm:col-span-10">
+          {/* Table */}
+        </div>
+
+      </div>
 
     </>
   )

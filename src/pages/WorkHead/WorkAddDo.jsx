@@ -9,14 +9,26 @@ export default function WorkAddDo() {
     <>
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
-      <div className="float-left mr-3">
-        <Aside></Aside>
+
+      <div className="grid grid-cols-12">
+
+        <div className="sm:col-span-10">
+          <div className="sticky top-0">
+            <Aside></Aside>
+          </div>
+        </div>
+
+        <div className="col-span-12 sm:col-span-10">
+          <div className="mt-3 text-center">
+            <h1 className="text-3xl font-semibold text-left">เพิ่มภาระงาน</h1>
+            <ModalAddWorkDo></ModalAddWorkDo>
+            <TableWorkAddDo></TableWorkAddDo>
+          </div>
+
+        </div>
+
       </div>
-      <div className="container mt-3 ml-3 text-center">
-        <h1 className="text-3xl font-semibold text-left">เพิ่มภาระงาน</h1>
-        <ModalAddWorkDo></ModalAddWorkDo>
-        <TableWorkAddDo></TableWorkAddDo>
-      </div>
+
     </>
   );
 }

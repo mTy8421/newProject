@@ -7,13 +7,17 @@ export default function Admin() {
     <>
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
-      <div className="mr-3">
-        <div className="float-left">
+
+      <div className="grid grid-cols-12">
+
+        <div className="sm:col-span-2">
           <Aside></Aside>
         </div>
-        <div className="mt-3">
+
+        <div className="mt-3 col-span-12 sm:col-span-10">
           {/* Table */}
         </div>
+
       </div>
     </>
   )
