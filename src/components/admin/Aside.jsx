@@ -10,7 +10,7 @@ export default function Aside() {
             className="text-white text-3xl font-semibold uppercase hover:text-gray-300"
             to={"/"}
           >
-            หัวหน้างาน
+            Admin
           </Link>
           <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
             <i className="mr-3"></i>New

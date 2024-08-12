@@ -1,6 +1,5 @@
-import ModalCheckWork from "./Modal/ModalCheckWork";
-
-const TableWork = () => {
+import ModalApprove from "../Modal/ModalApprove";
+const TableApprove = () => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -8,37 +7,38 @@ const TableWork = () => {
         <thead>
           <tr>
             <th>รหัสภาระงาน</th>
+            <th>ชื่อผู้ใช้งาน</th>
             <th>ชื่อภาระงาน</th>
-            <th>ชื่อหัวข้อภาระงาน</th>
             <th>ตวจรสอบ</th>
+            <th>สถานะ</th>
           </tr>
         </thead>
         <tbody>
           {/* row 1 */}
           <tr className="hover">
-            <td>1</td>
+            <th>1</th>
             <td>Cy Ganderton</td>
             <td>Quality Control Specialist</td>
             <td>
-              <ModalCheckWork></ModalCheckWork>
+              <ModalApprove></ModalApprove>
             </td>
           </tr>
           {/* row 2 */}
           <tr className="hover">
-            <td>2</td>
+            <th>2</th>
             <td>Hart Hagerty</td>
             <td>Desktop Support Technician</td>
             <td>
-              <ModalCheckWork></ModalCheckWork>
+              <ModalApprove></ModalApprove>
             </td>
           </tr>
           {/* row 3 */}
           <tr className="hover">
-            <td>3</td>
+            <th>3</th>
             <td>Brice Swyre</td>
             <td>Tax Accountant</td>
             <td>
-              <ModalCheckWork></ModalCheckWork>
+              <ModalApprove></ModalApprove>
             </td>
           </tr>
         </tbody>
@@ -47,4 +47,4 @@ const TableWork = () => {
   );
 };
 
-export default TableWork;
+export default TableApprove;

@@ -1,7 +1,8 @@
 import NavBar from "../../components/head/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
 import Aside from "../../components/head/Aside";
-import TableWorkAddDo from "./TableWorkAddDo";
+
+import TableWorkAddDo from "./Table/TableWorkAddDo";
 import ModalAddWorkDo from "./Modal/ModalAddWorkDo";
 
 export default function WorkAddDo() {

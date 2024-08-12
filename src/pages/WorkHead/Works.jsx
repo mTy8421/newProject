@@ -1,7 +1,7 @@
 import NavBar from "../../components/head/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
 import Aside from "../../components/head/Aside";
-import TableWork from "./TableWork";
+import TableWork from "./Table/TableWork";
 
 export default function Works() {
   return (

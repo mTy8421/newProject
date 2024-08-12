@@ -1,7 +1,7 @@
 import NavBar from "../../components/head/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
 import Aside from "../../components/head/Aside";
-import TableApprove from "./TableApprove";
+import TableApprove from "./Table/TableApprove";
 
 export default function Approve() {
   return (

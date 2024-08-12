@@ -16,6 +16,7 @@ import Approve from "./pages/WorkHead/Approve.jsx";
 
 import Admin from "./pages/Admin/Admin.jsx";
 import AdminWork from "./pages/Admin/Work.jsx";
+import AdminHistorys from "./pages/Admin/Historys/Historys.jsx"
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/works",
     element: <AdminWork />,
+  },
+  {
+    path: "admin/historys",
+    element: <AdminHistorys />,
   },
   {
     path: "*",

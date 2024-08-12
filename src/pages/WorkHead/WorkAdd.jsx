@@ -1,7 +1,7 @@
 import NavBar from "../../components/head/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
 import Aside from "../../components/head/Aside";
-import TableWorkAdd from "./TableWorkAdd";
+import TableWorkAdd from "./Table/TableWorkAdd";
 
 import ModalAddWork from "./Modal/ModalAddWork";
 
