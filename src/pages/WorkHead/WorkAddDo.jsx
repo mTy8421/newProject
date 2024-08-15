@@ -13,7 +13,7 @@ export default function WorkAddDo() {
 
       <div className="grid grid-cols-12">
 
-        <div className="sm:col-span-10">
+        <div className="sm:col-span-2">
           <div className="sticky top-0">
             <Aside></Aside>
           </div>

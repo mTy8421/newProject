@@ -1,6 +1,15 @@
+import { useState } from "react";
+
 import ModalWork from "./ModalWork";
 
 const TableWork = () => {
+
+  const [dataTable, setDataTable] = useState([
+    { Name: 'test', Title: 'test Title' },
+    { Name: 'test', Title: 'test Title' },
+    { Name: 'test', Title: 'test Title' },
+  ])
+
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -20,6 +29,10 @@ const TableWork = () => {
                   clipRule="evenodd" />
               </svg>
             </label>
+            <button className="btn btn-info mt-3" onClick={() => {
+              setDataTable([...dataTable, { Name: 'test', Title: 'test Title' }])
+              console.table(dataTable)
+            }}>Test Add Values Table</button>
           </div>
           <tr>
             <th>รหัสภาระงาน</th>
@@ -29,33 +42,17 @@ const TableWork = () => {
           </tr>
         </thead>
         <tbody>
-          {/* row 1 */}
-          <tr className="hover">
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Quality Control Specialist</td>
-            <td>
-              <ModalWork></ModalWork>
-            </td>
-          </tr>
-          {/* row 2 */}
-          <tr className="hover">
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Desktop Support Technician</td>
-            <td>
-              <ModalWork></ModalWork>
-            </td>
-          </tr>
-          {/* row 3 */}
-          <tr className="hover">
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Tax Accountant</td>
-            <td>
-              <ModalWork></ModalWork>
-            </td>
-          </tr>
+
+          {dataTable.map((value, key) =>
+            <tr className="hover" key={key}>
+              <th>{key}</th>
+              <td>{value.Name}</td>
+              <td>{value.Title}</td>
+              <td>
+                <ModalWork></ModalWork>
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
