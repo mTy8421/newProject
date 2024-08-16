@@ -1,6 +1,4 @@
-import ModalWork from "./Modal/ModalWork";
-
-const TableWork = () => {
+const TableWorkAddDo = () => {
   return (
     <div className="overflow-x-auto">
       <table className="table">
@@ -23,9 +21,10 @@ const TableWork = () => {
           </div>
           <tr>
             <th>รหัสภาระงาน</th>
-            <th>ชื่อภาระงาน</th>
             <th>ชื่อหัวข้อภาระงาน</th>
-            <th>ตวจรสอบ</th>
+            <th>ชื่อภาระงาน</th>
+            <th>ประเภทของงาน</th>
+            <th>เวบา (นาที)</th>
           </tr>
         </thead>
         <tbody>
@@ -34,27 +33,24 @@ const TableWork = () => {
             <th>1</th>
             <td>Cy Ganderton</td>
             <td>Quality Control Specialist</td>
-            <td>
-              <ModalWork></ModalWork>
-            </td>
+            <td>Blue</td>
+            <td>Blue</td>
           </tr>
           {/* row 2 */}
           <tr className="hover">
             <th>2</th>
             <td>Hart Hagerty</td>
             <td>Desktop Support Technician</td>
-            <td>
-              <ModalWork></ModalWork>
-            </td>
+            <td>Purple</td>
+            <td>Purple</td>
           </tr>
           {/* row 3 */}
           <tr className="hover">
             <th>3</th>
             <td>Brice Swyre</td>
             <td>Tax Accountant</td>
-            <td>
-              <ModalWork></ModalWork>
-            </td>
+            <td>Red</td>
+            <td>Red</td>
           </tr>
         </tbody>
       </table>
@@ -62,4 +58,4 @@ const TableWork = () => {
   );
 };
 
-export default TableWork;
+export default TableWorkAddDo;
