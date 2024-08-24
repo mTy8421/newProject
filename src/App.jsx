@@ -6,7 +6,29 @@ import TableWork from "./pages/Users/TableWork";
 import { Bars } from "./lib/Bars";
 import { Pies } from "./lib/Pies";
 
+import { useEffect } from "react";
+import axios from "axios";
+
 function App() {
+
+  useEffect(() => {
+    const checkUser = async () => {
+      try {
+        const user = await axios.get('/api')
+        if (!user.data.user) {
+          window.location.href = '/api/login'
+        } else {
+          if (user.data.user.id !== 1) {
+            window.location.href = '/admin'
+          }
+        }
+      } catch (err) {
+        console.error(err)
+      }
+    }
+    checkUser()
+  }, [])
+
   return (
     <>
 

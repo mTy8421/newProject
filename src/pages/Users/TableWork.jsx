@@ -1,19 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ModalWork from "./ModalWork";
 
+import axios from "axios";
+
 const TableWork = () => {
 
-  const [dataTable, setDataTable] = useState([
-    { Name: 'test', Title: 'test Title' },
-    { Name: 'test', Title: 'test Title' },
-    { Name: 'test', Title: 'test Title' },
-  ])
+  const [dataTable, setDataTable] = useState([])
+
+  const update = () => {
+    axios.post("api/users", {
+      Name: 'testNew',
+      Title: 'TitleNew',
+    }).then(data => console.table(data))
+  }
+
+  useEffect(() => {
+    const table = async () => {
+      const res = await axios.get("/api/users")
+      setDataTable(res.data)
+    }
+    table()
+  }, [])
 
   return (
     <div className="overflow-x-auto">
       <table className="table">
         {/* head */}
+        <button className="btn btn-info text-white" onClick={update()}>Test</button>
         <thead>
           <div className="container ml-2">
             <label className="input input-bordered flex items-center gap-2">
@@ -29,10 +43,6 @@ const TableWork = () => {
                   clipRule="evenodd" />
               </svg>
             </label>
-            <button className="btn btn-info mt-3" onClick={() => {
-              setDataTable([...dataTable, { Name: 'test', Title: 'test Title' }])
-              console.table(dataTable)
-            }}>Test Add Values Table</button>
           </div>
           <tr>
             <th>รหัสภาระงาน</th>
