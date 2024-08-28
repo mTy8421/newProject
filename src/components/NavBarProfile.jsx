@@ -39,7 +39,7 @@ export default function NavBarProfile() {
               <a>Settings</a>
             </li>
             <li>
-              <a>Logout</a>
+              <a href="/api/logout">Logout</a>
             </li>
           </ul>
         </div>

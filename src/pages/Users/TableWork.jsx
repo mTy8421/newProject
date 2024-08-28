@@ -8,18 +8,19 @@ const TableWork = () => {
 
   const [dataTable, setDataTable] = useState([])
 
-  const update = () => {
-    axios.post("api/users", {
+  const update = async () => {
+    await axios.post("api/users", {
       Name: 'testNew',
       Title: 'TitleNew',
-    }).then(data => console.table(data))
+    })
+  }
+
+  const table = async () => {
+    const res = await axios.get("/api/users")
+    setDataTable(res.data)
   }
 
   useEffect(() => {
-    const table = async () => {
-      const res = await axios.get("/api/users")
-      setDataTable(res.data)
-    }
     table()
   }, [])
 
@@ -27,7 +28,7 @@ const TableWork = () => {
     <div className="overflow-x-auto">
       <table className="table">
         {/* head */}
-        <button className="btn btn-info text-white" onClick={update()}>Test</button>
+        <button className="btn btn-info text-white" onClick={() => update()}>Test</button>
         <thead>
           <div className="container ml-2">
             <label className="input input-bordered flex items-center gap-2">

@@ -7,6 +7,7 @@ import { Pies } from "../../lib/Pies"
 export default function Admin() {
   return (
     <>
+
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
 

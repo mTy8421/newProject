@@ -3,10 +3,37 @@ import NavBar from "../../components/users/NavBar";
 import Aside from "../../components/users/Aside";
 import TableWork from "./TableWork";
 
+import { useEffect } from "react";
+import axios from "axios";
+
 export default function Works() {
+
+  const checkUser = async () => {
+    try {
+      const user = await axios.get('/api')
+      if (user) {
+        if (!user.data.user) {
+          window.location.href = '/api/login'
+        } else {
+          if (user.data.user.role !== 'member') {
+            window.location.href = '/admin'
+          }
+        }
+      } else {
+        window.location.href = '/api/login'
+      }
+
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  useEffect(() => {
+    checkUser()
+  }, [])
+
   return (
     <>
-
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
 

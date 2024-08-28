@@ -11,21 +11,27 @@ import axios from "axios";
 
 function App() {
 
-  useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const user = await axios.get('/api')
+  const checkUser = async () => {
+    try {
+      const user = await axios.get('/api')
+      if (user) {
         if (!user.data.user) {
           window.location.href = '/api/login'
         } else {
-          if (user.data.user.id !== 1) {
+          if (user.data.user.role !== 'member') {
             window.location.href = '/admin'
           }
         }
-      } catch (err) {
-        console.error(err)
+      } else {
+        window.location.href = '/api/login'
       }
+
+    } catch (err) {
+      console.error(err)
     }
+  }
+
+  useEffect(() => {
     checkUser()
   }, [])
 
