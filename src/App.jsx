@@ -13,7 +13,7 @@ function App() {
 
   const checkUser = async () => {
     try {
-      const user = await axios.get('/api')
+      const user = await axios.get('/api/nxt')
       if (user) {
         if (!user.data.user) {
           window.location.href = '/api/login'
