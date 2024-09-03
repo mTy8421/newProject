@@ -1,4 +1,4 @@
-# สิงที่จำเป็นต้องมี
+# สิ่งที่จำเป็นต้องมี
 
 - [Node](https://nodejs.org/en)
 - [BackEndProject](https://github.com/mTy8421/test)
