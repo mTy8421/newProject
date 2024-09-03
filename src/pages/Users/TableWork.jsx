@@ -4,19 +4,10 @@ import ModalWork from "./ModalWork";
 
 import axios from "axios";
 
-// const update = async () => {
-//   await axios.post("api/users", {
-//     Name: 'testNew',
-//     Title: 'TitleNew',
-//   })
-// }
-//
-
-
 const TableWork = () => {
   // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
   const [data, setData] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
   const itemsPerPage = 5;
@@ -28,20 +19,21 @@ const TableWork = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users")
-    console.log(res.data)
+    const res = await axios.get("/api/users");
+    console.log(res.data);
     setData(res.data);
-  }
+  };
 
   useEffect(() => {
-    table()
-  }, [])
+    table();
+  }, []);
 
   // ฟิลเตอร์ข้อมูลตามคำค้นหา
-  const filteredData = data.filter((item) =>
-    Object.values(item).some((value) =>
-      value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-    )
+  const filteredData = data.filter(
+    (item) =>
+      Object.values(item).some((value) =>
+        value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
     // item.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -62,7 +54,7 @@ const TableWork = () => {
   // ฟังก์ชันสำหรับจัดการการเลือกแถว
   const handleRowSelect = (id) => {
     if (selectedRows.includes(id)) {
-      setSelectedRows(selectedRows.filter(rowId => rowId !== id));
+      setSelectedRows(selectedRows.filter((rowId) => rowId !== id));
     } else {
       setSelectedRows([...selectedRows, id]);
     }
@@ -73,13 +65,13 @@ const TableWork = () => {
     if (selectedRows.length === currentData.length) {
       setSelectedRows([]); // ถ้าทั้งหมดถูกเลือกแล้ว จะทำการยกเลิกการเลือกทั้งหมด
     } else {
-      setSelectedRows(currentData.map(item => item.id)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
+      setSelectedRows(currentData.map((item) => item.id)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
     }
   };
 
   // ฟังก์ชันสำหรับลบแถวที่ถูกเลือก
   const handleDeleteSelected = () => {
-    const newData = data.filter(item => !selectedRows.includes(item.id));
+    const newData = data.filter((item) => !selectedRows.includes(item.id));
     setData(newData);
     setSelectedRows([]); // ล้างแถวที่ถูกเลือกหลังจากลบ
   };
@@ -114,7 +106,10 @@ const TableWork = () => {
               <th>
                 <input
                   type="checkbox"
-                  checked={selectedRows.length === currentData.length && currentData.length > 0}
+                  checked={
+                    selectedRows.length === currentData.length &&
+                    currentData.length > 0
+                  }
                   onChange={handleSelectAll}
                   className="checkbox"
                 />
@@ -147,7 +142,9 @@ const TableWork = () => {
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="text-center">No data found</td>
+                <td colSpan="4" className="text-center">
+                  No data found
+                </td>
               </tr>
             )}
           </tbody>
@@ -161,7 +158,7 @@ const TableWork = () => {
             <button
               key={index}
               onClick={() => handlePageChange(index + 1)}
-              className={`btn ${currentPage === index + 1 ? 'btn-active' : ''}`}
+              className={`btn ${currentPage === index + 1 ? "btn-active" : ""}`}
             >
               {index + 1}
             </button>
