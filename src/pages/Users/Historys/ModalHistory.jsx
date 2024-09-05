@@ -1,4 +1,23 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const ModalHistory = () => {
+  const [Data, setData] = useState([]);
+
+  const fetchHistory = async () => {
+    try {
+      const response = await axios.get("/api/user/history");
+      console.log(response.data);
+      setData[response.data];
+    } catch (error) {
+      console.error("Error fetching history:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchHistory();
+  }, []);
+
   return (
     <div>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}

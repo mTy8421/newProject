@@ -1,4 +1,55 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const ModalAddWorkDo = () => {
+  const [valueRadio, setValueRadio] = useState("work1");
+
+  const [selectValue, setSelectValue] = useState([]);
+
+  const handleSave = async (e) => {
+    e.preventDefault(); // Prevent form submission
+    // Capture values from input fields
+    const topicInput = document.querySelector("select[name='topic']").value;
+    const radioInput = valueRadio;
+    const nameInput = document.querySelector("input[name='nameWork']").value;
+    const timeInput = document.querySelector("input[name='time']").value;
+
+    // Construct data object
+    const newWorkData = {
+      topic: topicInput,
+      type: radioInput,
+      name: nameInput,
+      time: timeInput,
+    };
+
+    try {
+      // Send POST request to /api/users/add endpoint
+      const response = await axios.post("/api/users/addHeadWork", newWorkData);
+      if (response.data.message == "success") {
+        window.location.reload();
+      } else {
+        alert(`${response.data.message}`);
+      }
+    } catch (error) {
+      console.error("Error saving data:", error);
+      alert("Failed to save data.");
+    }
+  };
+
+  const mainTitle = async () => {
+    try {
+      const response = await axios.get("/api/users/addHeadTitle");
+      setSelectValue(response.data);
+    } catch (error) {
+      console.log(error);
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    mainTitle();
+  }, []);
+
   return (
     <div>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -22,7 +73,10 @@ const ModalAddWorkDo = () => {
                     type="radio"
                     name="radio-1"
                     className="radio checked:bg-red-500"
-                    checked
+                    // checked
+                    onChange={() => {
+                      setValueRadio("work4");
+                    }}
                   />
                   <span className="label-text ml-3">Work 4</span>
                 </label>
@@ -33,7 +87,10 @@ const ModalAddWorkDo = () => {
                     type="radio"
                     name="radio-1"
                     className="radio checked:bg-blue-500"
-                    checked
+                    // checked
+                    onChange={() => {
+                      setValueRadio("work3");
+                    }}
                   />
                   <span className="label-text ml-3">Work 3</span>
                 </label>
@@ -44,7 +101,10 @@ const ModalAddWorkDo = () => {
                     type="radio"
                     name="radio-1"
                     className="radio checked:bg-red-500"
-                    checked
+                    // checked
+                    onChange={() => {
+                      setValueRadio("work2");
+                    }}
                   />
                   <span className="label-text ml-3">Work 2</span>
                 </label>
@@ -55,25 +115,32 @@ const ModalAddWorkDo = () => {
                     type="radio"
                     name="radio-1"
                     className="radio checked:bg-blue-500"
-                    checked
+                    // checked
+                    onChange={() => {
+                      setValueRadio("work1");
+                    }}
                   />
                   <span className="label-text ml-3">Work 1</span>
                 </label>
               </div>
             </div>
             <p className="py-4 text-left">หัวข้อหลัก :</p>
-            <select className="select select-bordered">
-              <option disabled selected>
+            <select className="select select-bordered" name="topic">
+              <option value={""} disabled selected>
                 Who shot first?
               </option>
-              <option>Han Solo</option>
-              <option>Greedo</option>
+              {selectValue.map((item) => (
+                <option key={item.id} value={item.topic}>
+                  {item.topic}
+                </option>
+              ))}
             </select>
             <p className="py-4 text-left">ชื่อภาระงาน :</p>
             <input
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
+              name="nameWork"
             />
             <div className="flex mt-3">
               <p className="py-4 text-left">เวลาในการทำงาน :</p>
@@ -81,11 +148,12 @@ const ModalAddWorkDo = () => {
                 type="text"
                 placeholder="นาที"
                 className="input input-bordered ml-3 w-full max-w-44"
+                name="time"
               />
             </div>
           </div>
           <div className="modal-action">
-            <form>
+            <form onSubmit={handleSave}>
               {/* if there is a button, it will close the modal */}
               <button className="btn btn-info text-white">บันทึกข้อมูล</button>
             </form>

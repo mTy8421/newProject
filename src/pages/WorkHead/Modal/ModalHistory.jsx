@@ -1,4 +1,7 @@
-const ModalHistory = () => {
+const ModalHistory = (props) => {
+  const { time, name, type, id, timeWork, timeUse, imgae, values } = props;
+  console.table(name);
+
   return (
     <div>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -15,38 +18,26 @@ const ModalHistory = () => {
           </h1>
           <div className="form-control text-center mt-3">
             <div className="flex justify-center items-center">
-              <p className="text-lg">ประเภทของงาน : Work 1</p>
+              <p className="text-lg">ประเภทของงาน : {id}</p>
             </div>
             <div className="flex justify-center items-center">
-              <p className="text-lg">ชื่องาน : Test</p>
+              <p className="text-lg">ชื่องาน : {id}</p>
             </div>
             <div className="flex justify-center items-center">
-              <p className="text-lg">เวลาในการทำงาน : 90 นาที</p>
+              <p className="text-lg">เวลาในการทำงาน : {id} นาที</p>
             </div>
             <hr className="mt-2" />
           </div>
           <div className="form-control mt-3">
             <p className="text-sm text-center">
-              เวลาในการทำงาน : 90 นาที เวลาที่่ใช้ไป : 30 นาที
+              เวลาในการทำงาน : {id} นาที เวลาที่ใช้ไป : {id} นาที
             </p>
-            <p className="text-sm mt-3">
-              ผลการปฎิบัติงาน : Lorem ipsum dolor sit amet, officia excepteur ex
-              fugiat reprehenderit enim labore culpa sint ad nisi Lorem pariatur
-              mollit ex esse exercitation amet. Nisi anim cupidatat excepteur
-              officia. Reprehenderit nostrud nostrud ipsum Lorem est aliquip
-              amet voluptate voluptate dolor minim nulla est proident. Nostrud
-              officia pariatur ut officia. Sit irure elit esse ea nulla sunt ex
-              occaecat reprehenderit commodo officia dolor Lorem duis laboris
-              cupidatat officia voluptate. Culpa proident adipisicing id nulla
-              nisi laboris ex in Lorem sunt duis officia eiusmod. Aliqua
-              reprehenderit commodo ex non excepteur duis sunt velit enim.
-              Voluptate laboris sint cupidatat ullamco ut ea consectetur et est
-              culpa et culpa duis.
-            </p>
+            <p className="text-sm mt-3">ผลการปฎิบัติงาน : {id}</p>
             <img
               className="text-center mt-3"
-              src="https://upload.wikimedia.org/wikipedia/commons/7/78/Image.jpg"
-              alt="รูปภาพ"
+              src={`/api/images/${imgae}`}
+              // alt="รูปภาพ"
+              alt={`/api/images/${imgae}`}
             />
           </div>
         </div>

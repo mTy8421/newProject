@@ -7,30 +7,28 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const Historys = () => {
-
   const checkUser = async () => {
     try {
-      const user = await axios.get('/api')
+      const user = await axios.get("/api");
       if (user) {
         if (!user.data.user) {
-          window.location.href = '/api/login'
+          window.location.href = "/api/login";
         } else {
-          if (user.data.user.role !== 'member') {
-            window.location.href = '/admin'
+          if (user.data.user.role !== "member") {
+            window.location.href = "/admin";
           }
         }
       } else {
-        window.location.href = '/api/login'
+        window.location.href = "/api/login";
       }
-
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   useEffect(() => {
-    checkUser()
-  }, [])
+    checkUser();
+  }, []);
 
   return (
     <div>
@@ -38,24 +36,20 @@ const Historys = () => {
       <NavBar></NavBar>
 
       <div className="grid grid-cols-12">
-
         <div className="sm:col-span-2">
           <div className="sticky top-0">
             <Aside></Aside>
           </div>
         </div>
         <div className="col-span-12 sm:col-span-10 mt-3">
-          <h1 className="text-3xl font-semibold text-center">ประวัติการทำงาน</h1>
+          <h1 className="text-3xl font-semibold text-center">
+            ประวัติการทำงาน
+          </h1>
           <div className="mt-3">
-            <TableHistory></TableHistory>
-            <TableHistory></TableHistory>
-            <TableHistory></TableHistory>
             <TableHistory></TableHistory>
           </div>
         </div>
-
       </div>
-
     </div>
   );
 };
