@@ -6,7 +6,32 @@ import TableWorkAdd2 from "./Table/TableAddWork2";
 
 import ModalAddWork from "./Modal/ModalAddWork";
 
+import axios from "axios";
+import { useEffect } from "react";
+
 export default function WorkAdd() {
+  const checkUser = async () => {
+    try {
+      const user = await axios.get("/api/nxt");
+      if (user) {
+        if (!user.data.user) {
+          window.location.href = "/api/login";
+        } else {
+          if (user.data.user.user_role != "member") {
+            window.location.href = "/admin";
+          }
+        }
+      } else {
+        window.location.href = "/api/login";
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  useEffect(() => {
+    checkUser();
+  }, []);
+
   return (
     <>
       <NavBarProfile></NavBarProfile>

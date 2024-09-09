@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const ModalAddWorkDo = (props) => {
-  const { id, topic, detail } = props;
+const ModalEditWork = (props) => {
+  const { id, topic, name, time } = props;
 
   const [nameInput, setNameInput] = useState("");
   const [timeInput, setTimeInput] = useState("");
@@ -14,14 +14,15 @@ const ModalAddWorkDo = (props) => {
 
     // Construct data object
     const newWorkData = {
+      id: id,
       topic: topic,
       name: nameInput,
       time: timeInput,
     };
 
     try {
-      // Send POST request to /api/users/add endpoint
-      const response = await axios.post("/api/users/addHeadWork", newWorkData);
+      // Send put request to /api/users/add endpoint
+      const response = await axios.put("/api/users/addHeadWork", newWorkData);
       if (response.data.message == "success") {
         window.location.reload();
       } else {
@@ -52,22 +53,21 @@ const ModalAddWorkDo = (props) => {
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn btn-info text-white"
-        onClick={() => document.getElementById(`my_modal_${id}`).showModal()}
+        onClick={() => document.getElementById(`my_modal_x${id}`).showModal()}
       >
-        เพิ่ม
+        แก้ไข
       </button>
-      <dialog id={`my_modal_${id}`} className="modal">
+      <dialog id={`my_modal_x${id}`} className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg text-center">
             เพิ่มรายระเอียดหัวข้อภาระงานประจำวัน
           </h3>
           <div className="form-control">
             <p className="py-4 text-left">หัวข้อ : {topic}</p>
-            <p className="py-4 text-left">รายระเอียดหัวข้อภาระงาน : {detail}</p>
             <p className="py-4 text-left">ชื่อภาระงาน :</p>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder={name}
               className="input input-bordered w-full"
               onChange={(e) => setNameInput(e.target.value)}
             />
@@ -75,7 +75,7 @@ const ModalAddWorkDo = (props) => {
               <p className="py-4 text-left">เวลาในการทำงาน :</p>
               <input
                 type="text"
-                placeholder="นาที"
+                placeholder={time}
                 className="input input-bordered ml-3 w-full max-w-44"
                 onChange={(e) => setTimeInput(e.target.value)}
               />
@@ -97,4 +97,4 @@ const ModalAddWorkDo = (props) => {
   );
 };
 
-export default ModalAddWorkDo;
+export default ModalEditWork;

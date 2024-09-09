@@ -18,7 +18,7 @@ export default function NavBarProfile() {
           </Link>
           <h1 className="self-center text-2xl mx-auto font-semibold whitespace-nowrap dark:text-dark items-center">
             <button className="btn btn-ghost text-4xl">
-              Support Staff Workload System
+              Support Staff Workload System - ICT
             </button>
           </h1>
         </div>

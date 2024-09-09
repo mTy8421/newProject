@@ -16,8 +16,10 @@ const Historys = () => {
           </div>
         </div>
 
-        <div className="col-span-12 sm:col-span-10 mt-3">
-          <h1 className="text-3xl font-semibold">ประวัติการทำงาน</h1>
+        <div className="col-span-12 sm:col-span-10 mt-4">
+          <h1 className="text-3xl font-semibold text-center">
+            ประวัติการทำงาน
+          </h1>
           <div className="mt-3">
             <TableHistory></TableHistory>
           </div>

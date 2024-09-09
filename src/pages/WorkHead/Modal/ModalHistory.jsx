@@ -9,7 +9,7 @@ const ModalHistory = (props) => {
         className="btn"
         onClick={() => document.getElementById("my_modal_" + id).showModal()}
       >
-        ตวจรสอบ
+        ตรวจสอบ
       </button>
       <dialog id={`my_modal_${id}`} className="modal overflow-scroll">
         <div className="modal-box w-11/12 max-w-5xl">

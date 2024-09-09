@@ -16,8 +16,10 @@ export default function Works() {
           </div>
         </div>
 
-        <div className="mt-3 col-span-12 sm:col-span-10">
-          <h1 className="text-3xl font-semibold">ภาระงานที่ได้รับมอบหมาย</h1>
+        <div className="mt-4 col-span-12 sm:col-span-10">
+          <h1 className="text-3xl font-semibold text-center">
+            ภาระงานที่ได้รับมอบหมาย
+          </h1>
 
           <div className="mt-3">
             <TableWork></TableWork>

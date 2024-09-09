@@ -80,23 +80,25 @@ const TableWork = () => {
     <div className="p-6">
       {/* <h2 className="text-2xl font-bold mb-4">Search Table with Pagination and Delete</h2> */}
 
-      {/* อินพุตสำหรับการค้นหา */}
-      <input
-        type="text"
-        placeholder="Search by name..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-        className="input input-bordered w-full max-w-xs mb-4"
-      />
+      <div className="flex justify-between">
+        {/* อินพุตสำหรับการค้นหา */}
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="input input-bordered w-full max-w-xs mb-4"
+        />
 
-      {/* ปุ่ม Delete สำหรับลบแถวที่ถูกเลือก */}
-      <button
-        onClick={handleDeleteSelected}
-        className="btn btn-error mb-4 float-right text-white"
-        disabled={selectedRows.length === 0} // ปิดปุ่มถ้าไม่มีแถวที่ถูกเลือก
-      >
-        Delete Selected
-      </button>
+        {/* ปุ่ม Delete สำหรับลบแถวที่ถูกเลือก */}
+        <button
+          onClick={handleDeleteSelected}
+          className="btn btn-error mb-4 text-white"
+          disabled={selectedRows.length === 0} // ปิดปุ่มถ้าไม่มีแถวที่ถูกเลือก
+        >
+          Delete Selected
+        </button>
+      </div>
 
       {/* ตารางที่แสดงข้อมูล */}
       <div className="overflow-x-auto">

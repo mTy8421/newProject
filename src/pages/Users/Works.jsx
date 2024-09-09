@@ -44,7 +44,6 @@ export default function Works() {
 
         <div className="col-span-12 sm:col-span-10 mt-4">
           <h1 className="text-3xl font-bold text-center">
-            {/* บัญชีรายชื่อภาระงานที่ต้องปฎิบัติ */}
             ภาระงานที่ได้รับมอบหมาย
           </h1>
 
