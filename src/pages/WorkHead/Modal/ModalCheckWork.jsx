@@ -11,14 +11,6 @@ const ModalCheckWork = (props) => {
     const timeWork = document.querySelector("input[name='timeWork']").value;
     const timeUse = document.querySelector("input[name='timeUse']").value;
     const values = document.querySelector("textarea[name='values']").value;
-    // Construct data object
-    const newWorkData = {
-      type: type,
-      name: name,
-      timeWork: timeWork,
-      timeUse: timeUse,
-      values: values,
-    };
 
     try {
       // ส่งคำสั่ง POST ไปยัง URL ที่กำหนด โดยรวมอยู่ในรูปแบบ multipart/form-data

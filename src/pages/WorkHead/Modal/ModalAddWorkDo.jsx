@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const ModalAddWorkDo = () => {
+const ModalAddWorkDo = (props) => {
+  const { id } = props;
+
   const [valueRadio, setValueRadio] = useState("work1");
 
   const [selectValue, setSelectValue] = useState([]);
@@ -55,11 +57,11 @@ const ModalAddWorkDo = () => {
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn btn-info text-white"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
+        onClick={() => document.getElementById(`my_modal_${id}`).showModal()}
       >
         เพิ่ม
       </button>
-      <dialog id="my_modal_4" className="modal">
+      <dialog id={`my_modal_${id}`} className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg">
             เพิ่มรายระเอียดหัวข้อภาระงานประจำวัน

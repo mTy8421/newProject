@@ -10,7 +10,7 @@ const TableWork = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงของการค้นหา
   const handleSearchChange = (e) => {
@@ -100,7 +100,7 @@ const TableWork = () => {
 
       {/* ตารางที่แสดงข้อมูล */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
@@ -114,16 +114,16 @@ const TableWork = () => {
                   className="checkbox"
                 />
               </th>
-              <th>รหัสภาระงาน</th>
+              <th>#</th>
               <th>ชื่อภาระงาน</th>
               <th>ชื่อหัวข้อภาระงาน</th>
-              <th>ตวจรสอบ</th>
+              <th>บันทึกภาระงาน</th>
             </tr>
           </thead>
           <tbody>
             {currentData.length > 0 ? (
               currentData.map((item) => (
-                <tr key={item.id}>
+                <tr key={item.id} className="hover">
                   <td>
                     <input
                       type="checkbox"

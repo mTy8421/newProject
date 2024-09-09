@@ -18,7 +18,6 @@ export default function NavBar() {
             <button
               onClick={() => {
                 setIsopen(!isOpen);
-                console.log(isOpen);
               }}
               className="text-white text-3xl focus:outline-none"
             >

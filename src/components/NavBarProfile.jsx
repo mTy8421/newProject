@@ -1,49 +1,28 @@
+import { Link } from "react-router-dom";
+
+import logo from "./style/logo.png";
+
 export default function NavBarProfile() {
   return (
-    <div className="navbar bg-base-100 hidden sm:flex">
-      <div className="flex-1">
-        <a className="btn btn-ghost text-xl">ระบบภาระงาน</a>
-      </div>
-      <div className="flex-none gap-2">
-        <div className="form-control">
-          <input
-            type="text"
-            placeholder="Search"
-            className="input input-bordered w-24 md:w-auto"
-          />
+    <>
+      <nav
+        className={`bg-white border-gray-200 dark:bg-base-100 drop-shadow-xl`}
+      >
+        <div className="hidden sm:flex flex-wrap items-center max-w-screen-xl p-8">
+          <Link className="flex items-center space-x-3 rtl:space-x-reverse">
+            <img
+              src={logo}
+              className="bg-[length:200px_100px]"
+              alt="Flowbite Logo"
+            />
+          </Link>
+          <h1 className="self-center text-2xl mx-auto font-semibold whitespace-nowrap dark:text-dark items-center">
+            <button className="btn btn-ghost text-4xl">
+              Support Staff Workload System
+            </button>
+          </h1>
         </div>
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
-            </div>
-          </div>
-          <ul
-            tabIndex={0}
-            className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a href="/api/logout">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+      </nav>
+    </>
   );
 }

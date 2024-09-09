@@ -10,7 +10,6 @@ export default function Works() {
       <NavBar></NavBar>
 
       <div className="grid grid-cols-12">
-
         <div className="sm:col-span-2">
           <div className="sticky top-0">
             <Aside></Aside>
@@ -18,19 +17,13 @@ export default function Works() {
         </div>
 
         <div className="mt-3 col-span-12 sm:col-span-10">
-
-          <h1 className="text-3xl font-semibold">
-            บัญชีรายชื่อภาระงานที่ต้องปฎิบัติ
-          </h1>
+          <h1 className="text-3xl font-semibold">ภาระงานที่ได้รับมอบหมาย</h1>
 
           <div className="mt-3">
             <TableWork></TableWork>
           </div>
-
         </div>
-
       </div>
-
     </>
   );
 }

@@ -1,5 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+
+import ModalAddWorkDo from "../Modal/ModalAddWorkDo";
+
+import axios from "axios";
 
 const TableWorkAdd = () => {
   // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
@@ -16,7 +19,7 @@ const TableWorkAdd = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/addHeadTitle");
+    const res = await axios.get("/api/users");
     console.log(res.data);
     setData(res.data);
   };
@@ -111,10 +114,9 @@ const TableWorkAdd = () => {
                   className="checkbox"
                 />
               </th>
-              <th>รหัสภาระงาน</th>
+              <th>#</th>
               <th>ชื่อหัวข้อภาระงาน</th>
-              <th>ผลสัมฤทธิ์ของงาน</th>
-              <th>กำหนดการแล้วเสร็จ</th>
+              <th>เพิ่มภาระงาน</th>
             </tr>
           </thead>
           <tbody>
@@ -130,9 +132,10 @@ const TableWorkAdd = () => {
                     />
                   </td>
                   <td>{item.id}</td>
-                  <td>{item.topic}</td>
-                  <td>{item.performance}</td>
-                  <td>{item.scheduleCompletion}</td>
+                  <td>{item.Title}</td>
+                  <td>
+                    <ModalAddWorkDo id={item.id} />
+                  </td>
                 </tr>
               ))
             ) : (

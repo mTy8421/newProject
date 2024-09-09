@@ -9,12 +9,12 @@ import axios from "axios";
 const Historys = () => {
   const checkUser = async () => {
     try {
-      const user = await axios.get("/api");
+      const user = await axios.get("/api/nxt");
       if (user) {
         if (!user.data.user) {
           window.location.href = "/api/login";
         } else {
-          if (user.data.user.role !== "member") {
+          if (user.data.user.user_role != "member") {
             window.location.href = "/admin";
           }
         }
@@ -42,9 +42,7 @@ const Historys = () => {
           </div>
         </div>
         <div className="col-span-12 sm:col-span-10 mt-3">
-          <h1 className="text-3xl font-semibold text-center">
-            ประวัติการทำงาน
-          </h1>
+          <h1 className="text-3xl font-bold text-center">ประวัติการทำงาน</h1>
           <div className="mt-3">
             <TableHistory></TableHistory>
           </div>

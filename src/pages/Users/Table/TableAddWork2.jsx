@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
-const TableHistory = () => {
+const TableAddWork2 = () => {
   // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงของการค้นหา
   const handleSearchChange = (e) => {
@@ -16,7 +16,7 @@ const TableHistory = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/addWork");
+    const res = await axios.get("/api/users/addHeadWork");
     console.log(res.data);
     setData(res.data);
   };
@@ -112,8 +112,9 @@ const TableHistory = () => {
                 />
               </th>
               <th>#</th>
+              <th>ชื่อหัวข้อภาระงาน</th>
               <th>ชื่อภาระงาน</th>
-              <th>เวลาที่ใช้ในการทำงาน</th>
+              <th>เวลาในการทำงาน (นาที)</th>
             </tr>
           </thead>
           <tbody>
@@ -129,8 +130,12 @@ const TableHistory = () => {
                     />
                   </td>
                   <td>{item.id}</td>
+                  <td>{item.topic}</td>
                   <td>{item.name}</td>
-                  <td>{item.timeUse}</td>
+                  <td>{item.time}</td>
+                  <td>
+                    <button className="btn btn-info text-white">แก้ไข</button>
+                  </td>
                 </tr>
               ))
             ) : (
@@ -161,4 +166,5 @@ const TableHistory = () => {
     </div>
   );
 };
-export default TableHistory;
+
+export default TableAddWork2;

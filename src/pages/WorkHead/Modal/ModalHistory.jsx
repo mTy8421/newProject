@@ -7,11 +7,11 @@ const ModalHistory = (props) => {
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
+        onClick={() => document.getElementById("my_modal_" + id).showModal()}
       >
         ตวจรสอบ
       </button>
-      <dialog id="my_modal_4" className="modal overflow-scroll">
+      <dialog id={`my_modal_${id}`} className="modal overflow-scroll">
         <div className="modal-box w-11/12 max-w-5xl">
           <h1 className="font-bold text-xl text-center">
             รายละเอียดภาระงานประจำวัน
@@ -36,8 +36,7 @@ const ModalHistory = (props) => {
             <img
               className="text-center mt-3"
               src={`/api/images/${imgae}`}
-              // alt="รูปภาพ"
-              alt={`/api/images/${imgae}`}
+              alt="รูปภาพ"
             />
           </div>
         </div>

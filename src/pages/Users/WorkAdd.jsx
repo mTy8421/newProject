@@ -1,8 +1,8 @@
-import NavBar from "../../components/head/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
-import Aside from "../../components/head/Aside";
-import TableWorkAdd from "./Table/TableWorkAdd";
-import TableWorkAddDo from "./Table/TableWorkAddDo";
+import NavBar from "../../components/users/NavBar";
+import Aside from "../../components/users/Aside";
+import TableWorkAdd from "./Table/TableAddWork";
+import TableWorkAdd2 from "./Table/TableAddWork2";
 
 import ModalAddWork from "./Modal/ModalAddWork";
 
@@ -20,13 +20,13 @@ export default function WorkAdd() {
         </div>
 
         <div className="col-span-12 sm:col-span-10">
-          <div className="mt-4">
+          <div className="mt-3">
             <h1 className="text-3xl font-semibold text-center">เพิ่มภาระงาน</h1>
             <div className="text-center mt-3">
               <ModalAddWork></ModalAddWork>
             </div>
             <TableWorkAdd></TableWorkAdd>
-            <TableWorkAddDo></TableWorkAddDo>
+            <TableWorkAdd2></TableWorkAdd2>
           </div>
         </div>
       </div>

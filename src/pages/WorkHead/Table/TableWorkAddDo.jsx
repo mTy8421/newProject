@@ -111,11 +111,11 @@ const TableWorkAddDo = () => {
                   className="checkbox"
                 />
               </th>
-              <th>รหัสภาระงาน</th>
+              <th>#</th>
               <th>ชื่อหัวข้อภาระงาน</th>
               <th>ชื่อภาระงาน</th>
               <th>ประเภทของงาน</th>
-              <th>เวบา (นาที)</th>
+              <th>เวลา (นาที)</th>
             </tr>
           </thead>
           <tbody>

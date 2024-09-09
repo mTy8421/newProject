@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import ModalAddWorkDo from "../Modal/ModalAddWorkDo";
+
 import axios from "axios";
 
-const TableHistory = () => {
+const TableWorkAdd = () => {
   // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,7 +19,7 @@ const TableHistory = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/addWork");
+    const res = await axios.get("/api/users");
     console.log(res.data);
     setData(res.data);
   };
@@ -112,8 +115,8 @@ const TableHistory = () => {
                 />
               </th>
               <th>#</th>
-              <th>ชื่อภาระงาน</th>
-              <th>เวลาที่ใช้ในการทำงาน</th>
+              <th>ชื่อหัวข้อภาระงาน</th>
+              <th>เพิ่มภาระงาน</th>
             </tr>
           </thead>
           <tbody>
@@ -129,8 +132,10 @@ const TableHistory = () => {
                     />
                   </td>
                   <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{item.timeUse}</td>
+                  <td>{item.Title}</td>
+                  <td>
+                    <ModalAddWorkDo id={item.id} topic={item.Title} />
+                  </td>
                 </tr>
               ))
             ) : (
@@ -161,4 +166,5 @@ const TableHistory = () => {
     </div>
   );
 };
-export default TableHistory;
+
+export default TableWorkAdd;

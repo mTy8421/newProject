@@ -6,7 +6,7 @@ const ModalWork = () => {
         className="btn"
         onClick={() => document.getElementById("my_modal_4").showModal()}
       >
-        ตวจรสอบ
+        ตรวจสอบ
       </button>
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
@@ -14,9 +14,6 @@ const ModalWork = () => {
             กรอกรายละเอียดภาระงานประจำวัน
           </h1>
           <div className="form-control text-center mt-3">
-            <div className="flex justify-center items-center">
-              <p className="text-lg">ประเภทของงาน : Work 1</p>
-            </div>
             <div className="flex justify-center items-center">
               <p className="text-lg">ชื่องาน : Test</p>
             </div>
@@ -27,23 +24,17 @@ const ModalWork = () => {
           </div>
           <div className="form-control mt-3">
             <div className="flex justify-center items-center">
-              <p className="py-4 text-left">เวนาในการทำงาน :</p>
-              <input
-                type="text"
-                placeholder="นาที"
-                className="input input-bordered w-full max-w-44 ml-3"
-              />
               <p className="py-4 text-left ml-3">เวลาที่ใช้ไป :</p>
               <input
                 type="text"
-                placeholder="Type here"
+                placeholder="นาที"
                 className="input input-bordered w-full max-w-44 ml-3"
               />
             </div>
             <p className="py-4 text-left">ผลการปฎิบัติงาน :</p>
             <textarea
               className="textarea textarea-bordered h-24"
-              placeholder="Bio"
+              placeholder=""
             ></textarea>
             <p className="py-4 text-left">ภาพประกอบ :</p>
             <input

@@ -6,6 +6,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Works from "./pages/Users/Works.jsx";
 import Historys from "./pages/Users/Historys/Historys.jsx";
+import WorkAddUser from "./pages/Users/WorkAdd.jsx";
 
 import WorkAdd from "./pages/WorkHead/WorkAdd.jsx";
 import WorkAddDo from "./pages/WorkHead/WorkAddDo.jsx";
@@ -17,7 +18,7 @@ import Approve from "./pages/WorkHead/Approve.jsx";
 import Admin from "./pages/Admin/Admin.jsx";
 import AdminWork from "./pages/Admin/Work.jsx";
 import AdminAddWork from "./pages/Admin/WorkAddDo.jsx";
-import AdminHistorys from "./pages/Admin/Historys/Historys.jsx"
+import AdminHistorys from "./pages/Admin/Historys/Historys.jsx";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/works",
     element: <Works />,
+  },
+  {
+    path: "/addworks",
+    element: <WorkAddUser />,
   },
   {
     path: "/historys",
@@ -81,5 +86,5 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>,
+  </React.StrictMode>
 );

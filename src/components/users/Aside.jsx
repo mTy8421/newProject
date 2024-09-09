@@ -12,9 +12,9 @@ export default function Aside() {
           >
             พนักงาน
           </Link>
-          <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+          {/* <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
             <i className="mr-3"></i>New
-          </button>
+          </button> */}
         </div>
 
         <nav className="text-white text-base font-semibold pt-3">
@@ -27,11 +27,20 @@ export default function Aside() {
           </Link>
 
           <Link
+            to={"/addworks"}
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          >
+            <i className="mr-3"></i>
+            เพิ่มภาระงาน
+          </Link>
+
+          <Link
             to={"/works"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
             <i className="mr-3"></i>
-            ภาระงาน
+            {/* บันทึกภาระงาน */}
+            ภาระงานที่ได้รับมอบหมาย
           </Link>
 
           <Link
@@ -43,10 +52,13 @@ export default function Aside() {
           </Link>
         </nav>
 
-        <Link className="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
+        <a
+          href="/api/logout"
+          className="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4"
+        >
           <i className="mr-3"></i>
-          upgrade to pro
-        </Link>
+          ออกจากระบบ
+        </a>
       </div>
     </>
   );

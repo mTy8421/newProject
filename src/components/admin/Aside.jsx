@@ -12,9 +12,9 @@ export default function Aside() {
           >
             Admin
           </Link>
-          <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
+          {/* <button className="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
             <i className="mr-3"></i>New
-          </button>
+          </button> */}
         </div>
 
         <nav className="text-white text-base font-semibold pt-3">

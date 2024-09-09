@@ -5,18 +5,10 @@ const ModalAddWork = () => {
     e.preventDefault(); // Prevent form submission
     // Capture values from input fields
     const topicInput = document.querySelector("input[name='topic']");
-    const performanceInput = document.querySelector(
-      "textarea[name='performance']"
-    ).value;
-    const scheduleCompletionInput = document.querySelector(
-      "textarea[name='scheduleCompletion']"
-    ).value;
 
     // Construct data object
     const newWorkData = {
       topic: topicInput ? topicInput.value : "",
-      performance: performanceInput,
-      scheduleCompletion: scheduleCompletionInput,
     };
 
     try {
@@ -52,18 +44,6 @@ const ModalAddWork = () => {
               className="input input-bordered w-full"
               name="topic"
             />
-            <p className="py-4 text-left">ผลสัมฤทธิ์ของงาน :</p>
-            <textarea
-              className="textarea textarea-bordered h-24"
-              placeholder="Bio"
-              name="performance"
-            ></textarea>
-            <p className="py-4 text-left">กำหนดการแล้วเสร็จ (ถ้ามี) :</p>
-            <textarea
-              className="textarea textarea-bordered h-24"
-              placeholder="Bio"
-              name="scheduleCompletion"
-            ></textarea>
           </div>
           <div className="modal-action">
             <form onSubmit={handleSave}>
