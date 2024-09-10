@@ -20,8 +20,10 @@ const TableWorkAdd = () => {
 
   const table = async () => {
     const res = await axios.get("/api/users/addHeadTitle");
-    console.log(res.data);
-    setData(res.data);
+    console.table(res.data);
+    if (res.data) {
+      setData(res.data);
+    }
   };
 
   useEffect(() => {
@@ -119,6 +121,7 @@ const TableWorkAdd = () => {
               <th>#</th>
               <th>ชื่อหัวข้อภาระงาน</th>
               <th>ระยะเวลากำหนดส่ง</th>
+              <th>ประเภทภาระงาน</th>
               <th>เพิ่มภาระงาน</th>
             </tr>
           </thead>
@@ -134,14 +137,15 @@ const TableWorkAdd = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.id}</td>
-                  <td>{item.topic}</td>
-                  <td>{item.date}</td>
+                  <td>{item.title_id}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.title_date}</td>
+                  <td>{item.title_type}</td>
                   <td>
                     <ModalAddWorkDo
-                      id={item.id}
-                      topic={item.topic}
-                      detail={item.detail}
+                      id={item.title_id}
+                      topic={item.title_topic}
+                      detail={item.title_detail}
                     />
                   </td>
                 </tr>

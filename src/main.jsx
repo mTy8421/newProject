@@ -16,9 +16,11 @@ import Head from "./pages/WorkHead/Head.jsx";
 import Approve from "./pages/WorkHead/Approve.jsx";
 
 import Admin from "./pages/Admin/Admin.jsx";
-import AdminWork from "./pages/Admin/Work.jsx";
-import AdminAddWork from "./pages/Admin/WorkAddDo.jsx";
-import AdminHistorys from "./pages/Admin/Historys/Historys.jsx";
+import AdminWork from "./pages/Admin/WorkAdd.jsx";
+import AdminWorkDo from "./pages/Admin/Works.jsx";
+import AdminHistory from "./pages/Admin/Historys/Historys.jsx";
+import AdminApprove from "./pages/Admin/Approve.jsx";
+import AdminEditUser from "./pages/Admin/EditUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -66,16 +68,24 @@ const router = createBrowserRouter([
     element: <Admin />,
   },
   {
-    path: "/admin/works",
+    path: "/admin/editUser",
+    element: <AdminEditUser />,
+  },
+  {
+    path: "/admin/add",
     element: <AdminWork />,
   },
   {
-    path: "admin/historys",
-    element: <AdminHistorys />,
+    path: "/admin/works",
+    element: <AdminWorkDo />,
   },
   {
-    path: "admin/addworks",
-    element: <AdminAddWork />,
+    path: "/admin/historys",
+    element: <AdminHistory />,
+  },
+  {
+    path: "/admin/approve",
+    element: <AdminApprove />,
   },
   {
     path: "*",

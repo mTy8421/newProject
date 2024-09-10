@@ -1,6 +1,6 @@
-import ModalCheckWork from "../Modal/ModalCheckWork";
-
 import { useEffect, useState } from "react";
+
+import ModalCheckWork from "../Modal/ModalCheckWork";
 
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const TableWork = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
-  const itemsPerPage = 5;
+  const itemsPerPage = 10;
 
   // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงของการค้นหา
   const handleSearchChange = (e) => {
@@ -19,7 +19,7 @@ const TableWork = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/addHeadWork");
+    const res = await axios.get("/api/users");
     console.log(res.data);
     setData(res.data);
   };
@@ -102,7 +102,7 @@ const TableWork = () => {
 
       {/* ตารางที่แสดงข้อมูล */}
       <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
+        <table className="table w-full">
           <thead>
             <tr>
               <th>
@@ -116,16 +116,16 @@ const TableWork = () => {
                   className="checkbox"
                 />
               </th>
-              <th>รหัสภาระงาน</th>
+              <th>#</th>
               <th>ชื่อภาระงาน</th>
               <th>ชื่อหัวข้อภาระงาน</th>
-              <th>ตรวจสอบ</th>
+              <th>บันทึกภาระงาน</th>
             </tr>
           </thead>
           <tbody>
             {currentData.length > 0 ? (
               currentData.map((item) => (
-                <tr key={item.id}>
+                <tr key={item.id} className="hover">
                   <td>
                     <input
                       type="checkbox"
@@ -135,16 +135,10 @@ const TableWork = () => {
                     />
                   </td>
                   <td>{item.id}</td>
-                  <td>{item.topic}</td>
-                  <td>{item.name}</td>
+                  <td>{item.Name}</td>
+                  <td>{item.Title}</td>
                   <td>
-                    <ModalCheckWork
-                      time={item.time}
-                      name={item.name}
-                      type={item.type}
-                      id={item.id}
-                      topic={item.topic}
-                    />
+                    <ModalCheckWork />
                   </td>
                 </tr>
               ))

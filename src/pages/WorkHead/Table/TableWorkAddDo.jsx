@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 
+import ModalEditWork from "../Modal/ModalEditWork";
+
 const TableWorkAddDo = () => {
   // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
   const [data, setData] = useState([]);
@@ -17,8 +19,10 @@ const TableWorkAddDo = () => {
 
   const table = async () => {
     const res = await axios.get("/api/users/addHeadWork");
-    console.log(res.data);
-    setData(res.data);
+    console.table(res.data);
+    if (res.data) {
+      setData(res.data);
+    }
   };
 
   useEffect(() => {
@@ -116,8 +120,7 @@ const TableWorkAddDo = () => {
               <th>#</th>
               <th>ชื่อหัวข้อภาระงาน</th>
               <th>ชื่อภาระงาน</th>
-              <th>ประเภทของงาน</th>
-              <th>เวลา (นาที)</th>
+              <th>เวลาในการทำงาน (นาที)</th>
             </tr>
           </thead>
           <tbody>
@@ -132,11 +135,18 @@ const TableWorkAddDo = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.id}</td>
-                  <td>{item.topic}</td>
-                  <td>{item.name}</td>
-                  <td>{item.type}</td>
-                  <td>{item.time}</td>
+                  <td>{item.detail_id}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.detail_name}</td>
+                  <td>{item.detail_time}</td>
+                  <td>
+                    <ModalEditWork
+                      id={item.detail_id}
+                      topic={item.title_topic}
+                      name={item.detail_name}
+                      time={item.detail_time}
+                    />
+                  </td>
                 </tr>
               ))
             ) : (

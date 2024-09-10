@@ -7,7 +7,7 @@ import TableWorkAdd2 from "./Table/TableAddWork2";
 import ModalAddWork from "./Modal/ModalAddWork";
 
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function WorkAdd() {
   const checkUser = async () => {

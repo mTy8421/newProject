@@ -10,7 +10,7 @@ const TableWorkAdd = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedRows, setSelectedRows] = useState([]);
-  const itemsPerPage = 10;
+  const itemsPerPage = 5;
 
   // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงของการค้นหา
   const handleSearchChange = (e) => {
@@ -19,9 +19,11 @@ const TableWorkAdd = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users");
-    console.log(res.data);
-    setData(res.data);
+    const res = await axios.get("/api/users/addHeadTitle");
+    console.table(res.data);
+    if (res.data) {
+      setData(res.data);
+    }
   };
 
   useEffect(() => {
@@ -118,6 +120,8 @@ const TableWorkAdd = () => {
               </th>
               <th>#</th>
               <th>ชื่อหัวข้อภาระงาน</th>
+              <th>ระยะเวลากำหนดส่ง</th>
+              <th>ประเภทภาระงาน</th>
               <th>เพิ่มภาระงาน</th>
             </tr>
           </thead>
@@ -133,10 +137,16 @@ const TableWorkAdd = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.id}</td>
-                  <td>{item.Title}</td>
+                  <td>{item.title_id}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.title_date}</td>
+                  <td>{item.title_type}</td>
                   <td>
-                    <ModalAddWorkDo id={item.id} />
+                    <ModalAddWorkDo
+                      id={item.title_id}
+                      topic={item.title_topic}
+                      detail={item.title_detail}
+                    />
                   </td>
                 </tr>
               ))

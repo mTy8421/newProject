@@ -14,7 +14,7 @@ const ModalAddWorkDo = (props) => {
 
     // Construct data object
     const newWorkData = {
-      topic: topic,
+      id: id,
       name: nameInput,
       time: timeInput,
     };
@@ -63,7 +63,7 @@ const ModalAddWorkDo = (props) => {
           </h3>
           <div className="form-control">
             <p className="py-4 text-left">หัวข้อ : {topic}</p>
-            <p className="py-4 text-left">รายระเอียดหัวข้อภาระงาน : {detail}</p>
+            <p className="py-4 text-left">รายระเอียดภาระงาน : {detail}</p>
             <p className="py-4 text-left">ชื่อภาระงาน :</p>
             <input
               type="text"

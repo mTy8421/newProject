@@ -19,8 +19,7 @@ const TableWork = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users");
-    console.log(res.data);
+    const res = await axios.get("/api/users/addWork");
     setData(res.data);
   };
 
@@ -134,11 +133,11 @@ const TableWork = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.id}</td>
-                  <td>{item.Name}</td>
-                  <td>{item.Title}</td>
+                  <td>{item.title_id}</td>
+                  <td>{item.detail_name}</td>
+                  <td>{item.title_topic}</td>
                   <td>
-                    <ModalWork />
+                    <ModalWork id={item.detail_id} />
                   </td>
                 </tr>
               ))

@@ -1,7 +1,4 @@
-import ModalHistory from "../Modal/ModalHistory";
-
-import { useEffect, useState } from "react";
-
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const TableHistory = () => {
@@ -19,7 +16,7 @@ const TableHistory = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/addWork");
+    const res = await axios.get("/api/users/historyWork");
     console.log(res.data);
     setData(res.data);
   };
@@ -116,10 +113,9 @@ const TableHistory = () => {
                   className="checkbox"
                 />
               </th>
-              <th>รหัสภาระงาน</th>
+              <th>#</th>
               <th>ชื่อภาระงาน</th>
-              <th>ชื่อหัวข้อภาระงาน</th>
-              <th>ตรวจสอบ</th>
+              <th>เวลาที่ใช้ในการทำงาน</th>
             </tr>
           </thead>
           <tbody>
@@ -134,21 +130,9 @@ const TableHistory = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.id}</td>
-                  <td>{item.name}</td>
-                  <td>{item.topic}</td>
-                  <td>
-                    <ModalHistory
-                      time={item.time}
-                      name={item.name}
-                      type={item.type}
-                      id={item.id}
-                      timeWork={item.timeWork}
-                      timeUse={item.timeUse}
-                      imgae={item.imgae}
-                      values={item.values}
-                    />
-                  </td>
+                  <td>{item.send_id}</td>
+                  <td>{item.detail_name}</td>
+                  <td>{item.send_time}</td>
                 </tr>
               ))
             ) : (
@@ -179,5 +163,4 @@ const TableHistory = () => {
     </div>
   );
 };
-
 export default TableHistory;

@@ -1,10 +1,11 @@
-import NavBar from "../../components/head/NavBar";
+import NavBar from "../../components/admin/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
-import Aside from "../../components/head/Aside";
+import Aside from "../../components/admin/Aside";
+import TableEditUser from "./Table/TableEditUser";
 
-import ModalAddWork from "./Modal/ModalAddWork";
+import ModelAddUser from "./Modal/ModelAddUser";
 
-export default function WorkAddDo() {
+export default function WorkAdd() {
   return (
     <>
       <NavBarProfile></NavBarProfile>
@@ -20,11 +21,12 @@ export default function WorkAddDo() {
         <div className="col-span-12 sm:col-span-10">
           <div className="mt-4">
             <h1 className="text-3xl font-semibold text-center">
-              เพิ่มภาระงานasdfsadf
+              จัดการผู้ใช้งาน
             </h1>
-            <div className="text-center">
-              <ModalAddWork></ModalAddWork>
+            <div className="text-center mt-3">
+              <ModelAddUser></ModelAddUser>
             </div>
+            <TableEditUser></TableEditUser>
           </div>
         </div>
       </div>

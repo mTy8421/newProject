@@ -1,22 +1,21 @@
 import axios from "axios";
+import { useState } from "react";
 
 const ModalAddWork = () => {
+  const [topicInput, setTopicInput] = useState("");
+  const [dateInput, setDateInput] = useState("");
+  const [detailInput, setDetailInput] = useState("");
+  const [typeInput, setTypeInput] = useState("การเงิน");
+
   const handleSave = async (e) => {
     e.preventDefault(); // Prevent form submission
-    // Capture values from input fields
-    const topicInput = document.querySelector("input[name='topic']");
-    const performanceInput = document.querySelector(
-      "textarea[name='performance']"
-    ).value;
-    const scheduleCompletionInput = document.querySelector(
-      "textarea[name='scheduleCompletion']"
-    ).value;
 
     // Construct data object
     const newWorkData = {
-      topic: topicInput ? topicInput.value : "",
-      performance: performanceInput,
-      scheduleCompletion: scheduleCompletionInput,
+      topic: topicInput,
+      date: dateInput,
+      detail: detailInput,
+      type: typeInput,
     };
 
     try {
@@ -37,11 +36,11 @@ const ModalAddWork = () => {
     <div>
       <button
         className="btn btn-info text-white text-xl"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
+        onClick={() => document.getElementById("my_modal_x").showModal()}
       >
         เพิ่มหัวข้อภาระงาน
       </button>
-      <dialog id="my_modal_4" className="modal">
+      <dialog id="my_modal_x" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg">เพิ่มหัวข้อภาระงาน</h3>
           <div className="form-control">
@@ -50,20 +49,52 @@ const ModalAddWork = () => {
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
-              name="topic"
+              onChange={(e) => setTopicInput(e.target.value)}
             />
-            <p className="py-4 text-left">ผลสัมฤทธิ์ของงาน :</p>
-            <textarea
-              className="textarea textarea-bordered h-24"
-              placeholder="Bio"
-              name="performance"
-            ></textarea>
-            <p className="py-4 text-left">กำหนดการแล้วเสร็จ (ถ้ามี) :</p>
-            <textarea
-              className="textarea textarea-bordered h-24"
-              placeholder="Bio"
-              name="scheduleCompletion"
-            ></textarea>
+            <p className="py-4 text-left">ประเภทภาระงาน :</p>
+            <div className="flex justify-around">
+              <div className="flex">
+                <input
+                  type="radio"
+                  name="radio-3"
+                  className="radio radio-secondary"
+                  onChange={() => setTypeInput("การเงิน")}
+                  defaultChecked
+                />
+                <p>การเงิน</p>
+              </div>
+              <div className="flex">
+                <input
+                  type="radio"
+                  name="radio-3"
+                  className="radio radio-secondary"
+                  onChange={() => setTypeInput("พัสดุ")}
+                />
+                <p>พัสดุ</p>
+              </div>
+              <div className="flex">
+                <input
+                  type="radio"
+                  name="radio-3"
+                  className="radio radio-secondary"
+                  onChange={() => setTypeInput("ประชาสัมพันธ์")}
+                />
+                <p>ประชาสัมพันธ์</p>
+              </div>
+            </div>
+            <p className="py-4 text-left">รายระเอียดภาระงาน :</p>
+            <input
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered w-full"
+              onChange={(e) => setDetailInput(e.target.value)}
+            />
+            <p className="py-4 text-left">ระยะเวลากำหนดส่ง :</p>
+            <input
+              type="date"
+              className="input input-bordered w-full max-w-44"
+              onChange={(e) => setDateInput(e.target.value)}
+            />
           </div>
           <div className="modal-action">
             <form onSubmit={handleSave}>

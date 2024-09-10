@@ -1,7 +1,10 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import ModalAddWorkDo from "../Modal/ModalAddWorkDo";
+
 import axios from "axios";
 
-const TableHistory = () => {
+const TableEditUser = () => {
   // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
   const [data, setData] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,9 +19,11 @@ const TableHistory = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/historyWork");
-    console.log(res.data);
-    setData(res.data);
+    const res = await axios.get("/api/users/userEdit");
+    console.table(res.data);
+    if (res.data) {
+      setData(res.data);
+    }
   };
 
   useEffect(() => {
@@ -114,8 +119,9 @@ const TableHistory = () => {
                 />
               </th>
               <th>#</th>
-              <th>ชื่อภาระงาน</th>
-              <th>เวลาที่ใช้ในการทำงาน</th>
+              <th>รายชื่อผู้ใช้งาน</th>
+              <th>Email</th>
+              <th>ต่ำแหน่ง</th>
             </tr>
           </thead>
           <tbody>
@@ -130,9 +136,13 @@ const TableHistory = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.send_id}</td>
-                  <td>{item.detail_name}</td>
-                  <td>{item.send_time}</td>
+                  <td>{item.user_id}</td>
+                  <td>{item.user_name}</td>
+                  <td>{item.user_email}</td>
+                  <td>{item.user_role}</td>
+                  {/* <td>
+                    <ModalAddWorkDo />
+                  </td> */}
                 </tr>
               ))
             ) : (
@@ -163,4 +173,5 @@ const TableHistory = () => {
     </div>
   );
 };
-export default TableHistory;
+
+export default TableEditUser;

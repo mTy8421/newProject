@@ -1,50 +1,180 @@
+import { useEffect, useState } from "react";
+
+import ModalAddWorkDo from "../Modal/ModalAddWorkDo";
+
+import axios from "axios";
+
 const TableWorkAdd = () => {
+  // สร้าง state สำหรับจัดการข้อมูล, คำค้นหา, หน้า Pagination, และแถวที่ถูกเลือก
+  const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedRows, setSelectedRows] = useState([]);
+  const itemsPerPage = 5;
+
+  // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงของการค้นหา
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
+    setCurrentPage(1); // รีเซ็ตกลับไปหน้าที่ 1 เมื่อค้นหาใหม่
+  };
+
+  const table = async () => {
+    const res = await axios.get("/api/users/addHeadTitle");
+    console.table(res.data);
+    if (res.data) {
+      setData(res.data);
+    }
+  };
+
+  useEffect(() => {
+    table();
+  }, []);
+
+  // ฟิลเตอร์ข้อมูลตามคำค้นหา
+  const filteredData = data.filter(
+    (item) =>
+      Object.values(item).some((value) =>
+        value.toString().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    // item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  // คำนวณจำนวนหน้า Pagination
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+
+  // ฟังก์ชันสำหรับดึงข้อมูลของหน้าปัจจุบัน
+  const currentData = filteredData.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // ฟังก์ชันสำหรับจัดการการเปลี่ยนหน้า
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  // ฟังก์ชันสำหรับจัดการการเลือกแถว
+  const handleRowSelect = (id) => {
+    if (selectedRows.includes(id)) {
+      setSelectedRows(selectedRows.filter((rowId) => rowId !== id));
+    } else {
+      setSelectedRows([...selectedRows, id]);
+    }
+  };
+
+  // ฟังก์ชันสำหรับจัดการการเลือกแถวทั้งหมด
+  const handleSelectAll = () => {
+    if (selectedRows.length === currentData.length) {
+      setSelectedRows([]); // ถ้าทั้งหมดถูกเลือกแล้ว จะทำการยกเลิกการเลือกทั้งหมด
+    } else {
+      setSelectedRows(currentData.map((item) => item.id)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
+    }
+  };
+
+  // ฟังก์ชันสำหรับลบแถวที่ถูกเลือก
+  const handleDeleteSelected = () => {
+    const newData = data.filter((item) => !selectedRows.includes(item.id));
+    setData(newData);
+    setSelectedRows([]); // ล้างแถวที่ถูกเลือกหลังจากลบ
+  };
+
   return (
-    <div className="overflow-x-auto">
-      <table className="table">
-        {/* head */}
-        <thead>
-          <div className="container ml-2">
-            <label className="input input-bordered flex items-center gap-2">
-              <input type="text" className="grow" placeholder="Search" />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="h-4 w-4 opacity-70">
-                <path
-                  fillRule="evenodd"
-                  d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                  clipRule="evenodd" />
-              </svg>
-            </label>
-          </div>
-          <tr>
-            <th>รหัสภาระงาน</th>
-            <th>ชื่อหัวข้อภาระงาน</th>
-          </tr>
-        </thead>
-        <tbody>
-          {/* row 1 */}
-          <tr className="hover">
-            <th>1</th>
-            <td>Cy Ganderton</td>
-            <td>Blue</td>
-          </tr>
-          {/* row 2 */}
-          <tr className="hover">
-            <th>2</th>
-            <td>Hart Hagerty</td>
-            <td>Purple</td>
-          </tr>
-          {/* row 3 */}
-          <tr className="hover">
-            <th>3</th>
-            <td>Brice Swyre</td>
-            <td>Red</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="p-6">
+      {/* <h2 className="text-2xl font-bold mb-4">Search Table with Pagination and Delete</h2> */}
+
+      <div className="flex justify-between">
+        {/* อินพุตสำหรับการค้นหา */}
+        <input
+          type="text"
+          placeholder="Search by name..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="input input-bordered w-full max-w-xs mb-4"
+        />
+
+        {/* ปุ่ม Delete สำหรับลบแถวที่ถูกเลือก */}
+        <button
+          onClick={handleDeleteSelected}
+          className="btn btn-error mb-4 text-white"
+          disabled={selectedRows.length === 0} // ปิดปุ่มถ้าไม่มีแถวที่ถูกเลือก
+        >
+          Delete Selected
+        </button>
+      </div>
+
+      {/* ตารางที่แสดงข้อมูล */}
+      <div className="overflow-x-auto">
+        <table className="table table-zebra w-full">
+          <thead>
+            <tr>
+              <th>
+                <input
+                  type="checkbox"
+                  checked={
+                    selectedRows.length === currentData.length &&
+                    currentData.length > 0
+                  }
+                  onChange={handleSelectAll}
+                  className="checkbox"
+                />
+              </th>
+              <th>#</th>
+              <th>ชื่อหัวข้อภาระงาน</th>
+              <th>ระยะเวลากำหนดส่ง</th>
+              <th>ประเภทภาระงาน</th>
+              <th>เพิ่มภาระงาน</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentData.length > 0 ? (
+              currentData.map((item) => (
+                <tr key={item.id}>
+                  <td>
+                    <input
+                      type="checkbox"
+                      checked={selectedRows.includes(item.id)}
+                      onChange={() => handleRowSelect(item.id)}
+                      className="checkbox"
+                    />
+                  </td>
+                  <td>{item.title_id}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.title_date}</td>
+                  <td>{item.title_type}</td>
+                  <td>
+                    <ModalAddWorkDo
+                      id={item.title_id}
+                      topic={item.title_topic}
+                      detail={item.title_detail}
+                    />
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="text-center">
+                  No data found
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Pagination */}
+      <div className="flex justify-center mt-4">
+        <div className="btn-group">
+          {Array.from({ length: totalPages }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              className={`btn ${currentPage === index + 1 ? "btn-active" : ""}`}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

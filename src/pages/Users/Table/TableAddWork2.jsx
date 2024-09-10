@@ -19,8 +19,10 @@ const TableAddWork2 = () => {
 
   const table = async () => {
     const res = await axios.get("/api/users/addHeadWork");
-    console.log(res.data);
-    setData(res.data);
+    console.table(res.data);
+    if (res.data) {
+      setData(res.data);
+    }
   };
 
   useEffect(() => {
@@ -133,16 +135,16 @@ const TableAddWork2 = () => {
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.id}</td>
-                  <td>{item.topic}</td>
-                  <td>{item.name}</td>
-                  <td>{item.time}</td>
+                  <td>{item.detail_id}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.detail_name}</td>
+                  <td>{item.detail_time}</td>
                   <td>
                     <ModalEditWork
-                      id={item.id}
-                      topic={item.topic}
-                      name={item.name}
-                      time={item.time}
+                      id={item.detail_id}
+                      topic={item.title_topic}
+                      name={item.detail_name}
+                      time={item.detail_time}
                     />
                   </td>
                 </tr>

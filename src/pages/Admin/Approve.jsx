@@ -1,10 +1,9 @@
 import NavBar from "../../components/admin/NavBar";
 import NavBarProfile from "../../components/NavBarProfile";
 import Aside from "../../components/admin/Aside";
+import TableApprove from "./Table/TableApprove";
 
-import ModalAddWork from "./Modal/ModalAddWork";
-
-export default function WorkAddDo() {
+export default function Approve() {
   return (
     <>
       <NavBarProfile></NavBarProfile>
@@ -17,15 +16,9 @@ export default function WorkAddDo() {
           </div>
         </div>
 
-        <div className="col-span-12 sm:col-span-10">
-          <div className="mt-4">
-            <h1 className="text-3xl font-semibold text-center">
-              เพิ่มภาระงานasdfsadf
-            </h1>
-            <div className="text-center">
-              <ModalAddWork></ModalAddWork>
-            </div>
-          </div>
+        <div className="mt-4 col-span-12 sm:col-span-10">
+          <h1 className="text-3xl font-semibold text-center">อนุมติภาระงาน</h1>
+          <TableApprove></TableApprove>
         </div>
       </div>
     </>
