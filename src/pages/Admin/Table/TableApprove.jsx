@@ -25,13 +25,13 @@ const TableApprove = () => {
     table();
   }, []);
 
-  // ฟิลเตอร์ข้อมูลตามคำค้นหา
-  const filteredData = data.filter(
-    (item) =>
-      Object.values(item).some((value) =>
-        value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    // item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // ฟิลตร์ข้อมูลตามคำค้นหา (รองรับภาษาไทยและอังกฤษ)
+  const filteredData = data.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        value.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+        value.toString().toLowerCase().includes(searchTerm.toUpperCase()) // เพิ่มเพื่อรองรับภาษาอังกฤษ
+    )
   );
 
   // คำนวณจำนวนหน้า Pagination
@@ -62,15 +62,13 @@ const TableApprove = () => {
     if (selectedRows.length === currentData.length) {
       setSelectedRows([]); // ถ้าทั้งหมดถูกเลือกแล้ว จะทำการยกเลิกการเลือกทั้งหมด
     } else {
-      setSelectedRows(currentData.map((item) => item.title_id)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
+      setSelectedRows(currentData.map((item, index) => index)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
     }
   };
 
   // ฟังก์ชันสำหรับลบแถวที่ถูกเลือก
   const handleDeleteSelected = () => {
-    const newData = data.filter(
-      (item) => !selectedRows.includes(item.title_id)
-    );
+    const newData = data.filter((item, index) => !selectedRows.includes(index));
     setData(newData);
     setSelectedRows([]); // ล้างแถวที่ถูกเลือกหลังจากลบ
   };
@@ -121,17 +119,17 @@ const TableApprove = () => {
           </thead>
           <tbody>
             {currentData.length > 0 ? (
-              currentData.map((item) => (
-                <tr key={item.title_id}>
+              currentData.map((item, index) => (
+                <tr key={index}>
                   <td>
                     <input
                       type="checkbox"
-                      checked={selectedRows.includes(item.title_id)}
-                      onChange={() => handleRowSelect(item.title_id)}
+                      checked={selectedRows.includes(index)}
+                      onChange={() => handleRowSelect(index)}
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.title_id}</td>
+                  <td>{index + 1}</td>
                   <td>{item.user_name}</td>
                   <td>{item.title_topic}</td>
                   <td>

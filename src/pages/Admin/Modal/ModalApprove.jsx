@@ -74,7 +74,7 @@ const ModalApprove = (props) => {
               </p>
             </div>
           ))}
-          <img className="text-center mt-3" src="" alt="รูปภาพ" />
+          {/* <img className="text-center mt-3" src="" alt="รูปภาพ" /> */}
           <form onSubmit={update} className="flex justify-around">
             <button
               className="btn btn-info text-white"

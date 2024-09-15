@@ -1,14 +1,29 @@
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
+import axios from "axios";
+
+import { useEffect, useState } from "react";
+
 ChartJS.register(ArcElement, Tooltip, Legend);
-export function Pies() {
+export function PiesUser() {
+  const [dataSet, setDataSet] = useState([]);
+
+  const tableData = async () => {
+    const responst = await axios.get("api/users/chartUser");
+    setDataSet(responst.data);
+  };
+
+  useEffect(() => {
+    tableData();
+  }, []);
+
   const data = {
-    labels: [],
+    labels: dataSet.map((item) => item.title_type),
     datasets: [
       {
-        label: "# of Votes",
-        data: [12, 19, 3],
+        label: "ภาระงานที่ทำ",
+        data: dataSet.map((item) => item.total),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -39,6 +54,9 @@ export function Pies() {
     scales: {
       x: {
         stacked: true,
+        ticks: {
+          display: false,
+        },
       },
       y: {
         stacked: true,

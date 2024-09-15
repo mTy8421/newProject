@@ -14,7 +14,7 @@ const Historys = () => {
         if (!user.data.user) {
           window.location.href = "/api/login";
         } else {
-          if (user.data.user.user_role != "member") {
+          if (user.data.user.user_role != "พนักงาน") {
             window.location.href = "/admin";
           }
         }

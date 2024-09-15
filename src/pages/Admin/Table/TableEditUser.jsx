@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-
-import ModalAddWorkDo from "../Modal/ModalAddWorkDo";
-
 import axios from "axios";
 
 const TableEditUser = () => {
@@ -30,13 +27,13 @@ const TableEditUser = () => {
     table();
   }, []);
 
-  // ฟิลเตอร์ข้อมูลตามคำค้นหา
-  const filteredData = data.filter(
-    (item) =>
-      Object.values(item).some((value) =>
-        value.toString().toLowerCase().includes(searchTerm.toLowerCase())
-      )
-    // item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // ฟิลตร์ข้อมูลตามคำค้นหา (รองรับภาษาไทยและอังกฤษ)
+  const filteredData = data.filter((item) =>
+    Object.values(item).some(
+      (value) =>
+        value.toString().toLowerCase().includes(searchTerm.toLowerCase()) ||
+        value.toString().toLowerCase().includes(searchTerm.toUpperCase()) // เพิ่มเพื่อรองรับภาษาอังกฤษ
+    )
   );
 
   // คำนวณจำนวนหน้า Pagination
@@ -67,13 +64,13 @@ const TableEditUser = () => {
     if (selectedRows.length === currentData.length) {
       setSelectedRows([]); // ถ้าทั้งหมดถูกเลือกแล้ว จะทำการยกเลิกการเลือกทั้งหมด
     } else {
-      setSelectedRows(currentData.map((item) => item.id)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
+      setSelectedRows(currentData.map((item, index) => index)); // เลือกทั้งหมดที่อยู่ในหน้าปัจจุบัน
     }
   };
 
   // ฟังก์ชันสำหรับลบแถวที่ถูกเลือก
   const handleDeleteSelected = () => {
-    const newData = data.filter((item) => !selectedRows.includes(item.id));
+    const newData = data.filter((item, index) => !selectedRows.includes(index));
     setData(newData);
     setSelectedRows([]); // ล้างแถวที่ถูกเลือกหลังจากลบ
   };
@@ -126,17 +123,17 @@ const TableEditUser = () => {
           </thead>
           <tbody>
             {currentData.length > 0 ? (
-              currentData.map((item) => (
-                <tr key={item.id}>
+              currentData.map((item, index) => (
+                <tr key={item.user_id}>
                   <td>
                     <input
                       type="checkbox"
-                      checked={selectedRows.includes(item.id)}
-                      onChange={() => handleRowSelect(item.id)}
+                      checked={selectedRows.includes(index)}
+                      onChange={() => handleRowSelect(index)}
                       className="checkbox"
                     />
                   </td>
-                  <td>{item.user_id}</td>
+                  <td>{index + 1}</td>
                   <td>{item.user_name}</td>
                   <td>{item.user_email}</td>
                   <td>{item.user_role}</td>

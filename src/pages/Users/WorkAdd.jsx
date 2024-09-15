@@ -7,7 +7,7 @@ import TableWorkAdd2 from "./Table/TableAddWork2";
 import ModalAddWork from "./Modal/ModalAddWork";
 
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 export default function WorkAdd() {
   const checkUser = async () => {
@@ -17,7 +17,7 @@ export default function WorkAdd() {
         if (!user.data.user) {
           window.location.href = "/api/login";
         } else {
-          if (user.data.user.user_role != "member") {
+          if (user.data.user.user_role != "พนักงาน") {
             window.location.href = "/admin";
           }
         }

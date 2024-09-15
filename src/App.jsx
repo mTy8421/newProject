@@ -3,7 +3,7 @@ import NavBar from "./components/users/NavBar";
 import NavBarProfile from "./components/NavBarProfile";
 
 import { Bars } from "./lib/Bars";
-import { Pies } from "./lib/Pies";
+import { PiesUser } from "./lib/PiesUser";
 
 import { useEffect } from "react";
 import axios from "axios";
@@ -16,7 +16,7 @@ function App() {
         if (!user.data.user) {
           window.location.href = "/api/login";
         } else {
-          if (user.data.user.user_role != "member") {
+          if (user.data.user.user_role != "พนักงาน") {
             window.location.href = "/admin";
           }
         }
@@ -52,7 +52,7 @@ function App() {
                   <Bars />
                 </div>
                 <div className="w-1/3">
-                  <Pies />
+                  <PiesUser />
                 </div>
               </div>
             </div>
@@ -66,7 +66,7 @@ function App() {
             </div>
             <div className="card">
               <div className="card-title">
-                <Pies />
+                <PiesUser />
               </div>
             </div>
           </div>

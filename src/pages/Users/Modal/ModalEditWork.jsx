@@ -15,7 +15,6 @@ const ModalEditWork = (props) => {
     // Construct data object
     const newWorkData = {
       id: id,
-      topic: topic,
       name: nameInput,
       time: timeInput,
     };

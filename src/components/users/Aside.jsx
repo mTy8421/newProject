@@ -1,6 +1,15 @@
 import "../style/Aside.css";
 import { Link } from "react-router-dom";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHouse,
+  faPlus,
+  faBriefcase,
+  faClockRotateLeft,
+  faRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
+
 export default function Aside() {
   return (
     <>
@@ -22,7 +31,9 @@ export default function Aside() {
             to={"/"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
-            <i className="mr-3"></i>
+            <i className="mr-3">
+              <FontAwesomeIcon icon={faHouse} />
+            </i>
             หน้าหลัก
           </Link>
 
@@ -30,7 +41,9 @@ export default function Aside() {
             to={"/addworks"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
-            <i className="mr-3"></i>
+            <i className="mr-3">
+              <FontAwesomeIcon icon={faPlus} />
+            </i>
             เพิ่มภาระงาน
           </Link>
 
@@ -38,7 +51,9 @@ export default function Aside() {
             to={"/works"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
-            <i className="mr-3"></i>
+            <i className="mr-3">
+              <FontAwesomeIcon icon={faBriefcase} />
+            </i>
             {/* บันทึกภาระงาน */}
             ภาระงานที่ได้รับมอบหมาย
           </Link>
@@ -47,7 +62,9 @@ export default function Aside() {
             to={"/historys"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
-            <i className="mr-3"></i>
+            <i className="mr-3">
+              <FontAwesomeIcon icon={faClockRotateLeft} />
+            </i>
             ประวัติการทำงาน
           </Link>
         </nav>
@@ -56,7 +73,9 @@ export default function Aside() {
           href="/api/logout"
           className="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4"
         >
-          <i className="mr-3"></i>
+          <i className="mr-3">
+            <FontAwesomeIcon icon={faRightFromBracket} />
+          </i>
           ออกจากระบบ
         </a>
       </div>

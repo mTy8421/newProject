@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const ModalWork = (props) => {
-  const { id } = props;
+  const { id, type, name, times } = props;
 
   const [time, setTime] = useState("");
   const [valueTest, setValueTest] = useState("");
@@ -33,22 +33,25 @@ const ModalWork = (props) => {
     <div>
       <button
         className="btn"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
+        onClick={() => document.getElementById(`my_modal_x${id}`).showModal()}
       >
         ตรวจสอบ
       </button>
       <form onSubmit={handleSubmit}>
-        <dialog id="my_modal_4" className="modal">
+        <dialog id={`my_modal_x${id}`} className="modal">
           <div className="modal-box w-11/12 max-w-5xl">
             <h1 className="font-bold text-xl text-center">
               กรอกรายละเอียดภาระงานประจำวัน
             </h1>
             <div className="form-control text-center mt-3">
               <div className="flex justify-center items-center">
-                <p className="text-lg">ชื่องาน : Test</p>
+                <p className="text-lg">ประเภทงาน : {type}</p>
               </div>
               <div className="flex justify-center items-center">
-                <p className="text-lg">เวลาในการทำงาน : 90 นาที</p>
+                <p className="text-lg">ชื่องาน : {name}</p>
+              </div>
+              <div className="flex justify-center items-center">
+                <p className="text-lg">เวลาในการทำงาน : {times} นาที</p>
               </div>
               <hr className="mt-2" />
             </div>
@@ -60,7 +63,7 @@ const ModalWork = (props) => {
                   placeholder="นาที"
                   className="input input-bordered w-full max-w-44 ml-3"
                   name="time"
-                  value={time}
+                  required
                   onChange={(event) => setTime(event.target.value)}
                 />
               </div>
@@ -69,7 +72,7 @@ const ModalWork = (props) => {
                 className="textarea textarea-bordered h-24"
                 placeholder=""
                 name="valueTest"
-                value={valueTest}
+                required
                 onChange={(event) => setValueTest(event.target.value)}
               ></textarea>
               <p className="py-4 text-left">ภาพประกอบ :</p>

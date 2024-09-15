@@ -5,7 +5,7 @@ const ModelAddUser = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("member");
+  const [role, setRole] = useState("พนักงาน");
 
   console.log(role);
 
@@ -21,7 +21,7 @@ const ModelAddUser = () => {
 
     try {
       // Send POST request to /api/users/add endpoint
-      const response = await axios.post("/api/users/addHeadTitle", newWorkData);
+      const response = await axios.post("/api/users/userEdit", newWorkData);
       if (response.data.message == "success") {
         window.location.reload();
       } else {
@@ -71,7 +71,8 @@ const ModelAddUser = () => {
               onChange={(e) => setRole(e.target.value)}
               className="input input-bordered w-full"
             >
-              <option value="member">Member</option>
+              <option value="พนักงาน">พนักงาน</option>
+              <option value="หัวหน้าสำนักงาน">หัวหน้าสำนักงาน</option>
               <option value="admin">Admin</option>
             </select>
           </div>
