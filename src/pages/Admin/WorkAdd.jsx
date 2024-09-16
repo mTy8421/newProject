@@ -26,7 +26,6 @@ export default function WorkAdd() {
               <ModalAddWork></ModalAddWork>
             </div>
             <TableWorkAdd></TableWorkAdd>
-            <TableWorkAddDo></TableWorkAddDo>
           </div>
         </div>
       </div>

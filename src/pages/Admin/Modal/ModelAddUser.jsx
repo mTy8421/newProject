@@ -7,10 +7,9 @@ const ModelAddUser = () => {
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("พนักงาน");
 
-  console.log(role);
-
   const handleSave = async (e) => {
     e.preventDefault(); // Prevent form submission
+
     // Construct data object
     const newWorkData = {
       username,
@@ -52,28 +51,39 @@ const ModelAddUser = () => {
               className="input input-bordered w-full"
               onChange={(e) => setUsername(e.target.value)}
             />
-            <p className="py-4 text-left">Email ผู้ใช้งาน :</p>
+            <p className="py-4 text-left">Email :</p>
             <input
               type="text"
               placeholder="Type here"
               className="input input-bordered w-full"
               onChange={(e) => setEmail(e.target.value)}
             />
-            <p className="py-4 text-left">รหัสผ่านผู้ใช้งาน :</p>
+            <p className="py-4 text-left">รหัสผ่าน :</p>
             <input
               type="password"
               placeholder="Type here"
               className="input input-bordered w-full"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <p className="py-4 text-left">ต่ำแหน่งผู้ใช้งาน :</p>
+            <p className="py-4 text-left">ต่ำแหน่ง :</p>
             <select
               onChange={(e) => setRole(e.target.value)}
-              className="input input-bordered w-full"
+              className="select select-bordered w-full"
             >
               <option value="พนักงาน">พนักงาน</option>
               <option value="หัวหน้าสำนักงาน">หัวหน้าสำนักงาน</option>
-              <option value="admin">Admin</option>
+              <option value="admin">admin</option>
+              <option value="คณบดี">คณบดี</option>
+              <option value="คณบดีฝ่ายยุทธศาสตร์และพัฒนาองค์กร">
+                คณบดีฝ่ายยุทธศาสตร์และพัฒนาองค์กร
+              </option>
+              <option value="รองคณบดีฝ่ายวิชาการ">รองคณบดีฝ่ายวิชาการ</option>
+              <option value="รองคณบดีฝ่ายวิจัยและนวัตถกรรม">
+                รองคณบดีฝ่ายวิจัยและนวัตถกรรม
+              </option>
+              <option value="รองคณบดีฝ่ายคุณภาพนิสิต">
+                รองคณบดีฝ่ายคุณภาพนิสิต
+              </option>
             </select>
           </div>
           <div className="modal-action">

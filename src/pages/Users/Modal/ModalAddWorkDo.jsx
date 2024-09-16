@@ -1,9 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const ModalAddWorkDo = (props) => {
-  const { id, topic, detail } = props;
-
+const ModalAddWorkDo = () => {
   const [nameInput, setNameInput] = useState("");
   const [timeInput, setTimeInput] = useState("");
 
@@ -14,7 +12,6 @@ const ModalAddWorkDo = (props) => {
 
     // Construct data object
     const newWorkData = {
-      id: id,
       name: nameInput,
       time: timeInput,
     };
@@ -52,18 +49,18 @@ const ModalAddWorkDo = (props) => {
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn btn-info text-white"
-        onClick={() => document.getElementById(`my_modal_${id}`).showModal()}
+        onClick={() => document.getElementById(`my_modal_${1}`).showModal()}
       >
         เพิ่ม
       </button>
-      <dialog id={`my_modal_${id}`} className="modal">
+      <dialog id={`my_modal_${1}`} className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <h3 className="font-bold text-lg text-center">
             เพิ่มรายระเอียดหัวข้อภาระงานประจำวัน
           </h3>
           <div className="form-control">
-            <p className="py-4 text-left">หัวข้อ : {topic}</p>
-            <p className="py-4 text-left">รายระเอียดภาระงาน : {detail}</p>
+            <p className="py-4 text-left">หัวข้อ : {}</p>
+            <p className="py-4 text-left">รายระเอียดภาระงาน : {}</p>
             <p className="py-4 text-left">ชื่อภาระงาน :</p>
             <input
               type="text"

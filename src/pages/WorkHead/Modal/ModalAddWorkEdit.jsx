@@ -1,18 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
 
-const ModalAddWork = () => {
-  const [topicInput, setTopicInput] = useState("");
-  const [dateInput, setDateInput] = useState("");
-  const [detailInput, setDetailInput] = useState("");
-  const [typeInput, setTypeInput] = useState("งานหลัก/งานประจำ");
-  const [timeInput, setTimeInput] = useState("");
+const ModalAddWorkEdit = (props) => {
+  const { id, topic, date, detail, type, time } = props;
+
+  const [topicInput, setTopicInput] = useState(topic);
+  const [dateInput, setDateInput] = useState(date);
+  const [detailInput, setDetailInput] = useState(detail);
+  const [typeInput, setTypeInput] = useState(type);
+  const [timeInput, setTimeInput] = useState(time);
 
   const handleSave = async (e) => {
     e.preventDefault(); // Prevent form submission
 
     // Construct data object
     const newWorkData = {
+      id: id,
       topic: topicInput,
       date: dateInput,
       detail: detailInput,
@@ -21,8 +24,8 @@ const ModalAddWork = () => {
     };
 
     try {
-      // Send POST request to /api/users/add endpoint
-      const response = await axios.post("/api/users/addHeadTitle", newWorkData);
+      // Send put request to /api/users/add endpoint
+      const response = await axios.put("/api/users/addHeadTitle", newWorkData);
       if (response.data.message == "success") {
         window.location.reload();
       } else {
@@ -37,19 +40,19 @@ const ModalAddWork = () => {
   return (
     <div>
       <button
-        className="btn btn-info text-white text-xl"
-        onClick={() => document.getElementById("my_modal_x").showModal()}
+        className="btn btn-info text-white"
+        onClick={() => document.getElementById(`my_modal_x${id}`).showModal()}
       >
-        เพิ่มภาระงาน
+        แก้ไข
       </button>
-      <dialog id="my_modal_x" className="modal">
+      <dialog id={`my_modal_x${id}`} className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">เพิ่มภาระงาน</h3>
+          <h3 className="font-bold text-lg">เพิ่มหัวข้อภาระงาน</h3>
           <div className="form-control">
-            <p className="py-4 text-left">ชื่อภาระงาน :</p>
+            <p className="py-4 text-left">หัวข้อภาระงาน :</p>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder={topic}
               className="input input-bordered w-full"
               onChange={(e) => setTopicInput(e.target.value)}
             />
@@ -69,7 +72,7 @@ const ModalAddWork = () => {
             <p className="py-4 text-left">รายระเอียดภาระงาน :</p>
             <input
               type="text"
-              placeholder="Type here"
+              placeholder={detail}
               className="input input-bordered w-full"
               onChange={(e) => setDetailInput(e.target.value)}
             />
@@ -83,7 +86,7 @@ const ModalAddWork = () => {
             <p className="py-4 text-left">เวลาในการทำงาน :</p>
             <input
               type="text"
-              placeholder="(นาที)"
+              placeholder={time}
               className="input input-bordered ml-3 w-full max-w-44"
               onChange={(e) => setTimeInput(e.target.value)}
             />
@@ -106,4 +109,4 @@ const ModalAddWork = () => {
   );
 };
 
-export default ModalAddWork;
+export default ModalAddWorkEdit;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import ModalAddWorkDo from "../Modal/ModalAddWorkDo";
+import ModalAddWorkEdit from "../Modal/ModalAddWorkEdit";
 
 import axios from "axios";
 
@@ -122,7 +122,8 @@ const TableWorkAdd = () => {
               <th>ชื่อหัวข้อภาระงาน</th>
               <th>ระยะเวลากำหนดส่ง</th>
               <th>ประเภทภาระงาน</th>
-              <th>เพิ่มภาระงาน</th>
+              <th>รายระเอียดภาระงาน</th>
+              <th>เวลา (นาที)</th>
             </tr>
           </thead>
           <tbody>
@@ -141,11 +142,16 @@ const TableWorkAdd = () => {
                   <td>{item.title_topic}</td>
                   <td>{item.title_date}</td>
                   <td>{item.title_type}</td>
+                  <td>{item.title_detail}</td>
+                  <td>{item.title_time}</td>
                   <td>
-                    <ModalAddWorkDo
+                    <ModalAddWorkEdit
                       id={item.title_id}
                       topic={item.title_topic}
                       detail={item.title_detail}
+                      type={item.title_type}
+                      date={item.title_date}
+                      time={item.title_time}
                     />
                   </td>
                 </tr>

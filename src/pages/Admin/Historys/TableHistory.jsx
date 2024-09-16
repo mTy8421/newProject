@@ -16,7 +16,7 @@ const TableHistory = () => {
   };
 
   const table = async () => {
-    const res = await axios.get("/api/users/historyWork");
+    const res = await axios.get("/api/users/historyWorkHead");
     console.log(res.data);
     setData(res.data);
   };
@@ -114,9 +114,11 @@ const TableHistory = () => {
                 />
               </th>
               <th>#</th>
+              <th>ชื่อผู้ใช้งาน</th>
               <th>ชื่อภาระงาน</th>
               <th>เวลาในการทำงาน (นาที)</th>
               <th>เวลาที่ใช้ไป (นาที)</th>
+              <th>สถาณะ</th>
             </tr>
           </thead>
           <tbody>
@@ -132,9 +134,17 @@ const TableHistory = () => {
                     />
                   </td>
                   <td>{index + 1}</td>
-                  <td>{item.detail_name}</td>
+                  <td>{item.user_name}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.title_time}</td>
                   <td>{item.detail_time}</td>
-                  <td>{item.send_time}</td>
+                  <td>
+                    {item.detail_status === 0
+                      ? "รอดำเนินการ"
+                      : item.detail_status === 1
+                      ? "อนุมัติ"
+                      : "ไม่อนุมัติ"}
+                  </td>
                 </tr>
               ))
             ) : (

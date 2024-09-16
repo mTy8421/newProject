@@ -5,7 +5,8 @@ const ModalAddWork = () => {
   const [topicInput, setTopicInput] = useState("");
   const [dateInput, setDateInput] = useState("");
   const [detailInput, setDetailInput] = useState("");
-  const [typeInput, setTypeInput] = useState("การเงิน");
+  const [typeInput, setTypeInput] = useState("งานหลัก/งานประจำ");
+  const [timeInput, setTimeInput] = useState("");
 
   const handleSave = async (e) => {
     e.preventDefault(); // Prevent form submission
@@ -16,6 +17,7 @@ const ModalAddWork = () => {
       date: dateInput,
       detail: detailInput,
       type: typeInput,
+      time: timeInput,
     };
 
     try {
@@ -38,13 +40,13 @@ const ModalAddWork = () => {
         className="btn btn-info text-white text-xl"
         onClick={() => document.getElementById("my_modal_x").showModal()}
       >
-        เพิ่มหัวข้อภาระงาน
+        เพิ่มภาระงาน
       </button>
       <dialog id="my_modal_x" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
-          <h3 className="font-bold text-lg">เพิ่มหัวข้อภาระงาน</h3>
+          <h3 className="font-bold text-lg">เพิ่มภาระงาน</h3>
           <div className="form-control">
-            <p className="py-4 text-left">หัวข้อภาระงาน :</p>
+            <p className="py-4 text-left">ชื่อภาระงาน :</p>
             <input
               type="text"
               placeholder="Type here"
@@ -52,36 +54,18 @@ const ModalAddWork = () => {
               onChange={(e) => setTopicInput(e.target.value)}
             />
             <p className="py-4 text-left">ประเภทภาระงาน :</p>
-            <div className="flex justify-around">
-              <div className="flex">
-                <input
-                  type="radio"
-                  name="radio-3"
-                  className="radio radio-secondary"
-                  onChange={() => setTypeInput("การเงิน")}
-                  defaultChecked
-                />
-                <p>การเงิน</p>
-              </div>
-              <div className="flex">
-                <input
-                  type="radio"
-                  name="radio-3"
-                  className="radio radio-secondary"
-                  onChange={() => setTypeInput("พัสดุ")}
-                />
-                <p>พัสดุ</p>
-              </div>
-              <div className="flex">
-                <input
-                  type="radio"
-                  name="radio-3"
-                  className="radio radio-secondary"
-                  onChange={() => setTypeInput("ประชาสัมพันธ์")}
-                />
-                <p>ประชาสัมพันธ์</p>
-              </div>
-            </div>
+            <select
+              onChange={(e) => setTypeInput(e.target.value)}
+              className="select select-bordered w-full"
+            >
+              <option value="งานหลัก/งานประจำ">งานหลัก/งานประจำ</option>
+              <option value="งานยุทธศาสตร์">งานยุทธศาสตร์</option>
+              <option value="งานพัฒนางานประจำ">งานพัฒนางานประจำ</option>
+              <option value="งานเพื่อส่วนรวม">งานเพื่อส่วนรวม</option>
+              <option value="งานอื่นที่ได้รับมอบหมาย">
+                งานอื่นที่ได้รับมอบหมาย
+              </option>
+            </select>
             <p className="py-4 text-left">รายระเอียดภาระงาน :</p>
             <input
               type="text"
@@ -94,6 +78,14 @@ const ModalAddWork = () => {
               type="date"
               className="input input-bordered w-full max-w-44"
               onChange={(e) => setDateInput(e.target.value)}
+            />
+
+            <p className="py-4 text-left">เวลาในการทำงาน :</p>
+            <input
+              type="text"
+              placeholder="(นาที)"
+              className="input input-bordered ml-3 w-full max-w-44"
+              onChange={(e) => setTimeInput(e.target.value)}
             />
           </div>
           <div className="modal-action">

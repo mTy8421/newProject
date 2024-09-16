@@ -22,11 +22,11 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 
-export function Bars() {
+export function BarsUser() {
   const [dataSet, setDataSet] = useState([]);
 
   const tableData = async () => {
-    const responst = await axios.get("api/users/chartBarHead");
+    const responst = await axios.get("api/users/chartBarUser");
     setDataSet(responst.data);
   };
 

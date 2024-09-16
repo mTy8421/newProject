@@ -37,7 +37,7 @@ export default function Aside() {
             หน้าหลัก
           </Link>
 
-          <Link
+          {/* <Link
             to={"/addworks"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
@@ -45,7 +45,7 @@ export default function Aside() {
               <FontAwesomeIcon icon={faPlus} />
             </i>
             เพิ่มภาระงาน
-          </Link>
+          </Link> */}
 
           <Link
             to={"/works"}

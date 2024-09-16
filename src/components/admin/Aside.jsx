@@ -59,7 +59,7 @@ export default function Aside() {
             เพิ่มภาระงาน
           </Link>
 
-          <Link
+          {/* <Link
             to={"/admin/works"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
@@ -67,7 +67,7 @@ export default function Aside() {
               <FontAwesomeIcon icon={faBriefcase} />
             </i>
             ภาระงานที่ได้รับมอบหมาย
-          </Link>
+          </Link> */}
 
           <Link
             to={"/admin/historys"}

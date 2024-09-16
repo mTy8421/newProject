@@ -1,16 +1,15 @@
-import NavBarProfile from "../../components/NavBarProfile";
 import NavBar from "../../components/admin/NavBar";
+import NavBarProfile from "../../components/NavBarProfile";
 import Aside from "../../components/admin/Aside";
 
-import { Pies } from "../../lib/Pies";
 import { Bars } from "../../lib/Bars";
+import { PiesAdmin } from "../../lib/PiesAdmin";
 
-export default function Admin() {
+export default function Head() {
   return (
     <>
       <NavBarProfile></NavBarProfile>
       <NavBar></NavBar>
-
       <div className="grid grid-cols-12">
         <div className="sm:col-span-2">
           <div className="sticky top-0">
@@ -27,7 +26,7 @@ export default function Admin() {
                   <Bars />
                 </div>
                 <div className="w-1/3">
-                  <Pies />
+                  <PiesAdmin />
                 </div>
               </div>
             </div>
@@ -41,7 +40,7 @@ export default function Admin() {
             </div>
             <div className="card">
               <div className="card-title">
-                <Pies />
+                <PiesAdmin />
               </div>
             </div>
           </div>

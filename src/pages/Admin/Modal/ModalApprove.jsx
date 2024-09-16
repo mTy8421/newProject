@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const ModalApprove = (props) => {
-  const { id, topic, detail, type, date } = props;
+  const { id, topic, detail, type, date, testValues, time, img, idDetail } =
+    props;
 
   const [check, setCheck] = useState();
 
@@ -16,14 +17,13 @@ const ModalApprove = (props) => {
     }
   };
 
-  const dataNew = data.filter((item) => item.title_id === id);
-
   const update = async (e) => {
     e.preventDefault();
     try {
       const responst = await axios.put("/api/users/approve", {
         title_id: id,
         status: check,
+        detail_id: idDetail,
       });
       if (responst) {
         window.location.reload();
@@ -66,15 +66,16 @@ const ModalApprove = (props) => {
             </div>
             <hr className="mt-2" />
           </div>
-          {dataNew.map((item) => (
-            <div className="form-control mt-3" key={item.detail_id}>
-              <p className="text-sm mt-3">ชื่อภาระงาน : {item.detail_name}</p>
-              <p className="text-sm mt-3">
-                เวลาในการทำงาน : {item.detail_time} นาที
-              </p>
-            </div>
-          ))}
-          {/* <img className="text-center mt-3" src="" alt="รูปภาพ" /> */}
+          <div className="form-control mt-3 text-center">
+            <p className="text-sm mt-3">เวลาในการทำงาน : {time} นาที</p>
+            <p className="text-sm mt-3">ผลการปฎิบัติงาน : {testValues}</p>
+          </div>
+
+          <img
+            className="text-center mt-3"
+            src={`/api/images/${img}`}
+            alt="รูปภาพ"
+          />
           <form onSubmit={update} className="flex justify-around">
             <button
               className="btn btn-info text-white"

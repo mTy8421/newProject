@@ -50,7 +50,7 @@ export default function NavBar() {
               หน้าหลัก
             </Link>
 
-            <Link
+            {/* <Link
               to={"/addworks"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
@@ -58,7 +58,7 @@ export default function NavBar() {
                 <FontAwesomeIcon icon={faPlus} />
               </i>
               เพิ่มภาระงาน
-            </Link>
+            </Link> */}
 
             <Link
               to={"/works"}

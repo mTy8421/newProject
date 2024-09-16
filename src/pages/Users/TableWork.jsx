@@ -116,8 +116,9 @@ const TableWork = () => {
                 />
               </th>
               <th>#</th>
-              <th>ชื่อภาระงาน</th>
               <th>ชื่อหัวข้อภาระงาน</th>
+              <th>ประเภทภาระงาน</th>
+              <th>ระยะเวลา</th>
               <th>บันทึกภาระงาน</th>
             </tr>
           </thead>
@@ -134,14 +135,17 @@ const TableWork = () => {
                     />
                   </td>
                   <td>{index + 1}</td>
-                  <td>{item.detail_name}</td>
                   <td>{item.title_topic}</td>
+                  <td>{item.title_type}</td>
+                  <td>{item.title_date}</td>
                   <td>
                     <ModalWork
-                      id={item.detail_id}
+                      id={item.title_id}
                       type={item.title_type}
-                      name={item.detail_name}
-                      times={item.detail_time}
+                      name={item.title_topic}
+                      times={item.title_time}
+                      date={item.title_date}
+                      detail={item.title_detail}
                     />
                   </td>
                 </tr>

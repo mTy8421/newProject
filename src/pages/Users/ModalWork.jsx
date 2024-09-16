@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 const ModalWork = (props) => {
-  const { id, type, name, times } = props;
+  const { id, type, name, times, date, detail } = props;
 
   const [time, setTime] = useState("");
   const [valueTest, setValueTest] = useState("");
@@ -13,7 +13,7 @@ const ModalWork = (props) => {
     const formData = new FormData();
     formData.append("time", time);
     formData.append("valueTest", valueTest);
-    formData.append("detail_id", id);
+    formData.append("title_id", id);
     if (images) {
       formData.append("image", images);
     }
@@ -48,7 +48,16 @@ const ModalWork = (props) => {
                 <p className="text-lg">ประเภทงาน : {type}</p>
               </div>
               <div className="flex justify-center items-center">
-                <p className="text-lg">ชื่องาน : {name}</p>
+                <p className="text-lg">ชื่อภาระงาน : {name}</p>
+              </div>
+              <div className="flex justify-center items-center">
+                <p>
+                  <span className="text-lg">รายระเอียดภาระงาน : </span>
+                  {detail}
+                </p>
+              </div>
+              <div className="flex justify-center items-center">
+                <p className="text-lg">กำหนดการ : {date}</p>
               </div>
               <div className="flex justify-center items-center">
                 <p className="text-lg">เวลาในการทำงาน : {times} นาที</p>

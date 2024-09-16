@@ -117,6 +117,7 @@ const TableHistory = () => {
               <th>ชื่อภาระงาน</th>
               <th>เวลาในการทำงาน (นาที)</th>
               <th>เวลาที่ใช้ไป (นาที)</th>
+              <th>สถาณะ</th>
             </tr>
           </thead>
           <tbody>
@@ -132,9 +133,16 @@ const TableHistory = () => {
                     />
                   </td>
                   <td>{index + 1}</td>
-                  <td>{item.detail_name}</td>
+                  <td>{item.title_topic}</td>
+                  <td>{item.title_time}</td>
                   <td>{item.detail_time}</td>
-                  <td>{item.send_time}</td>
+                  <td>
+                    {item.detail_status === 0
+                      ? "รอดำเนินการ"
+                      : item.detail_status === 1
+                      ? "อนุมัติ"
+                      : "ไม่อนุมัติ"}
+                  </td>
                 </tr>
               ))
             ) : (

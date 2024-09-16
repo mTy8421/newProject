@@ -6,17 +6,21 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-export function Pies() {
+
+export function PiesAdmin() {
   const [dataSet, setDataSet] = useState([]);
 
-  const tableData = async () => {
-    const responst = await axios.get("/api/users/chartHead");
-    setDataSet(responst.data);
-  };
-
   useEffect(() => {
+    const tableData = async () => {
+      const responst = await axios.get("/api/users/chartHead");
+      setDataSet(responst.data);
+    };
     tableData();
   }, []);
+
+  if (!Array.isArray(dataSet)) {
+    return null;
+  }
 
   const data = {
     labels: dataSet.map((item) => item.user_name),

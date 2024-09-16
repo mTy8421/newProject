@@ -2,7 +2,7 @@ import Aside from "./components/users/Aside";
 import NavBar from "./components/users/NavBar";
 import NavBarProfile from "./components/NavBarProfile";
 
-import { Bars } from "./lib/Bars";
+import { BarsUser } from "./lib/BarsUser";
 import { PiesUser } from "./lib/PiesUser";
 
 import { useEffect } from "react";
@@ -49,7 +49,7 @@ function App() {
             <div className="card">
               <div className="card-title">
                 <div className="w-6/12">
-                  <Bars />
+                  <BarsUser />
                 </div>
                 <div className="w-1/3">
                   <PiesUser />
@@ -61,7 +61,7 @@ function App() {
           <div className="sm:hidden block">
             <div className="card">
               <div className="card-title">
-                <Bars />
+                <BarsUser />
               </div>
             </div>
             <div className="card">

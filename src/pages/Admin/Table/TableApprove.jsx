@@ -135,10 +135,14 @@ const TableApprove = () => {
                   <td>
                     <ModalApprove
                       id={item.title_id}
+                      idDetail={item.detail_id}
                       topic={item.title_topic}
                       detail={item.title_detail}
                       type={item.title_type}
                       date={item.title_date}
+                      testValues={item.detail_values}
+                      time={item.detail_time}
+                      img={item.detail_image}
                     />
                   </td>
                 </tr>

@@ -70,7 +70,7 @@ export default function NavBar() {
               </i>
               เพิ่มภาระงาน
             </Link>
-            <Link
+            {/* <Link
               to={"/admin/works"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
@@ -78,7 +78,7 @@ export default function NavBar() {
                 <FontAwesomeIcon icon={faBriefcase} />
               </i>
               ภาระงานที่ได้รับมอบหมาย
-            </Link>
+            </Link> */}
             <Link
               to={"/admin/historys"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"

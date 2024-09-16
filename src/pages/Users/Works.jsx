@@ -2,6 +2,7 @@ import NavBarProfile from "../../components/NavBarProfile";
 import NavBar from "../../components/users/NavBar";
 import Aside from "../../components/users/Aside";
 import TableWork from "./TableWork";
+import ModalAddWorkDo from "./Modal/ModalAddWorkDo";
 
 import { useEffect } from "react";
 import axios from "axios";

@@ -48,7 +48,7 @@ export default function Aside() {
             เพิ่มภาระงาน
           </Link>
 
-          <Link
+          {/* <Link
             to={"/head/works"}
             className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
           >
@@ -56,6 +56,16 @@ export default function Aside() {
               <FontAwesomeIcon icon={faBriefcase} />
             </i>
             ภาระงานที่ได้รับมอบหมาย
+          </Link> */}
+
+          <Link
+            to={"/head/approve"}
+            className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
+          >
+            <i className="mr-3">
+              <FontAwesomeIcon icon={faThumbsUp} />
+            </i>
+            อนุมัติภาระงาน
           </Link>
 
           <Link
@@ -66,16 +76,6 @@ export default function Aside() {
               <FontAwesomeIcon icon={faClockRotateLeft} />
             </i>
             ประวัติการทำงาน
-          </Link>
-
-          <Link
-            to={"/head/approve"}
-            className="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item"
-          >
-            <i className="mr-3">
-              <FontAwesomeIcon icon={faThumbsUp} />
-            </i>
-            อนุมัติภาระงาน
           </Link>
         </nav>
 

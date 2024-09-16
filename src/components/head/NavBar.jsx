@@ -61,7 +61,7 @@ export default function NavBar() {
               เพิ่มภาระงาน
             </Link>
 
-            <Link
+            {/* <Link
               to={"/head/works"}
               className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
             >
@@ -69,6 +69,16 @@ export default function NavBar() {
                 <FontAwesomeIcon icon={faBriefcase} />
               </i>
               ภาระงานที่ได้รับมอบหมาย
+            </Link> */}
+
+            <Link
+              to={"/head/approve"}
+              className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
+            >
+              <i className="mr-3">
+                <FontAwesomeIcon icon={faThumbsUp} />
+              </i>
+              อนุมัติภาระงาน
             </Link>
 
             <Link
@@ -79,16 +89,6 @@ export default function NavBar() {
                 <FontAwesomeIcon icon={faClockRotateLeft} />
               </i>
               ประวัติการทำงาน
-            </Link>
-
-            <Link
-              to={"/head/approve"}
-              className="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-itme"
-            >
-              <i className="mr-3">
-                <FontAwesomeIcon icon={faThumbsUp} />
-              </i>
-              อนุมัติภาระงาน
             </Link>
 
             <a

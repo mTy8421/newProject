@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+
+// import ModalAddWorkEdit from "../Modal/ModalAddWorkEdit";
+
 import axios from "axios";
 
 const TableEditUser = () => {
@@ -116,7 +119,7 @@ const TableEditUser = () => {
                 />
               </th>
               <th>#</th>
-              <th>รายชื่อผู้ใช้งาน</th>
+              <th>ชื่อผู้ใช้งาน</th>
               <th>Email</th>
               <th>ต่ำแหน่ง</th>
             </tr>
@@ -124,7 +127,7 @@ const TableEditUser = () => {
           <tbody>
             {currentData.length > 0 ? (
               currentData.map((item, index) => (
-                <tr key={item.user_id}>
+                <tr key={item.title_id}>
                   <td>
                     <input
                       type="checkbox"
@@ -137,9 +140,7 @@ const TableEditUser = () => {
                   <td>{item.user_name}</td>
                   <td>{item.user_email}</td>
                   <td>{item.user_role}</td>
-                  {/* <td>
-                    <ModalAddWorkDo />
-                  </td> */}
+                  <td>{/* <ModalAddWorkEdit id={item.title_id} /> */}</td>
                 </tr>
               ))
             ) : (
